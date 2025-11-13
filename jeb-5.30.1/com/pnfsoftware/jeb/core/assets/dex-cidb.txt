@@ -1,0 +1,672 @@
+#--------------------------------------
+# Context Information Database
+#--------------------------------------
+#
+# This database is used to provide additional context information to dex plugins regarding:
+# - methods: provide context access (= context-sensitivity and side-effects information)
+# - fields: provide effective finality
+
+# Currently, this database supports the addition of methods' context accesses only
+# (supported here as well as and programmatically)
+# The specification of effective finality information for fields must be done programmatically
+# (see IDexUnit.getContextInfoProvider)
+
+# Notes:
+# - One entry per line
+# - Entry format: 'signature [=CAT]' (CAT is the ContextAccessType)
+# - CAT is optional; if unspecified, the assumed value is NONE_SAFE (= context-insensitive, side-effect-free, will not throw)
+# - Other valid CATs imply 'may throw', they are: NONE, READ_ONLY, WRITE_ONLY, READ_WRITE, UNKNOWN (the dex analysis plugins decide)
+# - Methods and classes should be in canonical (jvm) form: e.g. 'La/b/Foo;', 'La/b/Foo;->bar([B)V'
+# - Line comments are allowed and must start with # (pound sign)
+# - When classes are specified, all methods but the following methods are included: static initializer,
+#   all constructors, Object.clone, Object.notify, Object.notifyAll, Object.wait (all overloads)
+# - Class wildcards are allowed, used to match all methods with a given full descriptor (name, parameter
+#   and return types), regardless of their class type
+
+# Tip:
+# To force some user code, whose dex analysis plugins deemed CI/SEF, to NOT be discarded by dexdec
+# optimizers during decompilation, you may mark the methods or classes as READ_WRITE.
+# Example: some logging methods, located in a class Lcom/xyz/util/Logger; have no side-effect and do not rely on
+# context to operate. The dex analysis plugins are likely to mark those methods as SEF/CI. Therefore, during
+# decompilation, calls to those methods are going to be removed.
+# If you want to prevent that, and keep the invocations in the final outputs, add the following line to this buffer:
+# Lcom/xyz/util/Logger;=READ_WRITE
+# If the above is too broad, you may flag a specific method, e.g. with something like:
+# Lcom/xyz/util/Logger;->f(Ljava/lang/String;)V=READ_WRITE
+
+#--------------------------------------
+
+# the entries below are safe to be kept
+
+Ljava/lang/System;->console()Ljava/io/Console;
+Ljava/lang/System;->currentTimeMillis()J
+Ljava/lang/System;->getenv()Ljava/util/Map;
+Ljava/lang/System;->getProperties()Ljava/util/Properties;
+Ljava/lang/System;->getSecurityManager()Ljava/lang/SecurityManager;
+Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
+Ljava/lang/System;->lineSeparator()Ljava/lang/String;
+Ljava/lang/System;->nanoTime()J
+
+Ljava/lang/Runtime;->availableProcessors()I
+Ljava/lang/Runtime;->freeMemory()J
+Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+Ljava/lang/Runtime;->maxMemory()J
+Ljava/lang/Runtime;->totalMemory()J
+
+Ljava/lang/Thread;->activeCount()I
+Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+Ljava/lang/Thread;->getId()J
+Ljava/lang/Thread;->getName()Ljava/lang/String;
+Ljava/lang/Thread;->getPriority()I
+Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+Ljava/lang/Thread;->getState()Ljava/lang/Thread$State;
+Ljava/lang/Thread;->getThreadGroup()Ljava/lang/ThreadGroup;
+Ljava/lang/Thread;->getUncaughtExceptionHandler()Ljava/lang/Thread$UncaughtExceptionHandler;
+Ljava/lang/Thread;->isAlive()Z
+Ljava/lang/Thread;->isDaemon()Z
+Ljava/lang/Thread;->isInterrupted()Z
+
+Ljava/lang/ThreadGroup;->activeCount()I
+Ljava/lang/ThreadGroup;->activeGroupCount()I
+Ljava/lang/ThreadGroup;->getMaxPriority()I
+Ljava/lang/ThreadGroup;->getName()Ljava/lang/String;
+Ljava/lang/ThreadGroup;->isDaemon()Z
+Ljava/lang/ThreadGroup;->isDestroyed()Z
+
+# methods from String, Boolean, Byte, Character, Short, Integer, Long, Float, Double, Void, Math
+Ljava/lang/String;-><init>()V
+Ljava/lang/String;-><init>([B)V
+Ljava/lang/String;-><init>([BLjava/nio/charset/Charset;)V
+Ljava/lang/String;-><init>([BI)V
+Ljava/lang/String;-><init>([C)V
+Ljava/lang/String;-><init>(Ljava/lang/String;)V
+Ljava/lang/String;-><init>(Ljava/lang/StringBuilder;)V
+Ljava/lang/String;-><init>(Ljava/lang/StringBuffer;)V
+Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+Ljava/lang/String;->toString()Ljava/lang/String;
+Ljava/lang/String;->hashCode()I
+Ljava/lang/String;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/String;->compareTo(Ljava/lang/String;)I
+Ljava/lang/String;->indexOf(Ljava/lang/String;I)I
+Ljava/lang/String;->indexOf(I)I
+Ljava/lang/String;->indexOf(Ljava/lang/String;)I
+Ljava/lang/String;->indexOf(II)I
+Ljava/lang/String;->valueOf(C)Ljava/lang/String;
+Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+Ljava/lang/String;->valueOf(Z)Ljava/lang/String;
+Ljava/lang/String;->valueOf([CII)Ljava/lang/String;
+Ljava/lang/String;->valueOf([C)Ljava/lang/String;
+Ljava/lang/String;->valueOf(D)Ljava/lang/String;
+Ljava/lang/String;->valueOf(F)Ljava/lang/String;
+Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+Ljava/lang/String;->length()I
+Ljava/lang/String;->isEmpty()Z
+Ljava/lang/String;->charAt(I)C
+Ljava/lang/String;->codePointAt(I)I
+Ljava/lang/String;->codePointBefore(I)I
+Ljava/lang/String;->codePointCount(II)I
+Ljava/lang/String;->offsetByCodePoints(II)I
+Ljava/lang/String;->getChars(II[CI)V
+Ljava/lang/String;->getBytes()[B
+# excluded: can throw under normal circumstances: Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+Ljava/lang/String;->getBytes(II[BI)V
+Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+Ljava/lang/String;->contentEquals(Ljava/lang/StringBuffer;)Z
+Ljava/lang/String;->contentEquals(Ljava/lang/CharSequence;)Z
+Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+Ljava/lang/String;->compareToIgnoreCase(Ljava/lang/String;)I
+Ljava/lang/String;->regionMatches(ILjava/lang/String;II)Z
+Ljava/lang/String;->regionMatches(ZILjava/lang/String;II)Z
+Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+Ljava/lang/String;->startsWith(Ljava/lang/String;I)Z
+Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+Ljava/lang/String;->lastIndexOf(II)I
+Ljava/lang/String;->lastIndexOf(Ljava/lang/String;I)I
+Ljava/lang/String;->lastIndexOf(I)I
+Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
+Ljava/lang/String;->substring(I)Ljava/lang/String;
+Ljava/lang/String;->substring(II)Ljava/lang/String;
+Ljava/lang/String;->subSequence(II)Ljava/lang/CharSequence;
+Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+Ljava/lang/String;->replace(CC)Ljava/lang/String;
+Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+Ljava/lang/String;->matches(Ljava/lang/String;)Z
+Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+Ljava/lang/String;->replaceFirst(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+Ljava/lang/String;->split(Ljava/lang/String;I)[Ljava/lang/String;
+Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+Ljava/lang/String;->join(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;
+Ljava/lang/String;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+Ljava/lang/String;->toUpperCase()Ljava/lang/String;
+Ljava/lang/String;->toUpperCase(Ljava/util/Locale;)Ljava/lang/String;
+Ljava/lang/String;->trim()Ljava/lang/String;
+Ljava/lang/String;->toCharArray()[C
+Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+Ljava/lang/String;->copyValueOf([CII)Ljava/lang/String;
+Ljava/lang/String;->copyValueOf([C)Ljava/lang/String;
+Ljava/lang/String;->intern()Ljava/lang/String;
+
+Ljava/lang/StringBuffer;->capacity()I
+Ljava/lang/StringBuffer;->indexOf(Ljava/lang/String;)I
+Ljava/lang/StringBuffer;->indexOf(Ljava/lang/String;I)I
+Ljava/lang/StringBuffer;->lastIndexOf(Ljava/lang/String;)I
+Ljava/lang/StringBuffer;->lastIndexOf(Ljava/lang/String;I)I
+Ljava/lang/StringBuffer;->length()I
+
+Ljava/lang/StringBuilder;->capacity()I
+Ljava/lang/StringBuilder;->indexOf(Ljava/lang/String;)I
+Ljava/lang/StringBuilder;->indexOf(Ljava/lang/String;I)I
+Ljava/lang/StringBuilder;->lastIndexOf(Ljava/lang/String;)I
+Ljava/lang/StringBuilder;->lastIndexOf(Ljava/lang/String;I)I
+Ljava/lang/StringBuilder;->length()I
+
+Ljava/lang/Boolean;-><init>(Z)V
+Ljava/lang/Boolean;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Boolean;->toString()Ljava/lang/String;
+Ljava/lang/Boolean;->toString(Z)Ljava/lang/String;
+Ljava/lang/Boolean;->hashCode(Z)I
+Ljava/lang/Boolean;->hashCode()I
+Ljava/lang/Boolean;->compareTo(Ljava/lang/Boolean;)I
+Ljava/lang/Boolean;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Boolean;->getBoolean(Ljava/lang/String;)Z
+Ljava/lang/Boolean;->booleanValue()Z
+Ljava/lang/Boolean;->valueOf(Ljava/lang/String;)Ljava/lang/Boolean;
+Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+Ljava/lang/Boolean;->compare(ZZ)I
+Ljava/lang/Boolean;->parseBoolean(Ljava/lang/String;)Z
+Ljava/lang/Boolean;->logicalAnd(ZZ)Z
+Ljava/lang/Boolean;->logicalOr(ZZ)Z
+Ljava/lang/Boolean;->logicalXor(ZZ)Z
+
+Ljava/lang/Byte;-><init>(B)V
+Ljava/lang/Byte;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Byte;->toString()Ljava/lang/String;
+Ljava/lang/Byte;->toString(B)Ljava/lang/String;
+Ljava/lang/Byte;->hashCode(B)I
+Ljava/lang/Byte;->hashCode()I
+Ljava/lang/Byte;->compareTo(Ljava/lang/Byte;)I
+Ljava/lang/Byte;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Byte;->byteValue()B
+Ljava/lang/Byte;->shortValue()S
+Ljava/lang/Byte;->intValue()I
+Ljava/lang/Byte;->longValue()J
+Ljava/lang/Byte;->floatValue()F
+Ljava/lang/Byte;->doubleValue()D
+Ljava/lang/Byte;->valueOf(B)Ljava/lang/Byte;
+# excluded: can throw under normal circumstances: Ljava/lang/Byte;->valueOf(Ljava/lang/String;)Ljava/lang/Byte;
+# excluded: can throw under normal circumstances: Ljava/lang/Byte;->valueOf(Ljava/lang/String;I)Ljava/lang/Byte;
+# excluded: can throw under normal circumstances: Ljava/lang/Byte;->decode(Ljava/lang/String;)Ljava/lang/Byte;
+Ljava/lang/Byte;->compare(BB)I
+# excluded: can throw under normal circumstances: Ljava/lang/Byte;->parseByte(Ljava/lang/String;I)B
+# excluded: can throw under normal circumstances: Ljava/lang/Byte;->parseByte(Ljava/lang/String;)B
+Ljava/lang/Byte;->toUnsignedInt(B)I
+Ljava/lang/Byte;->toUnsignedLong(B)J
+
+Ljava/lang/Character;-><init>(C)V
+Ljava/lang/Character;->isJavaIdentifierStart(C)Z
+Ljava/lang/Character;->isJavaIdentifierStart(I)Z
+Ljava/lang/Character;->isJavaIdentifierPart(I)Z
+Ljava/lang/Character;->isJavaIdentifierPart(C)Z
+Ljava/lang/Character;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Character;->toString(C)Ljava/lang/String;
+Ljava/lang/Character;->toString()Ljava/lang/String;
+Ljava/lang/Character;->hashCode()I
+Ljava/lang/Character;->hashCode(C)I
+Ljava/lang/Character;->reverseBytes(C)C
+Ljava/lang/Character;->compareTo(Ljava/lang/Character;)I
+Ljava/lang/Character;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Character;->charValue()C
+Ljava/lang/Character;->valueOf(C)Ljava/lang/Character;
+Ljava/lang/Character;->getName(I)Ljava/lang/String;
+Ljava/lang/Character;->codePointAt([CI)I
+Ljava/lang/Character;->codePointAt([CII)I
+Ljava/lang/Character;->codePointAt(Ljava/lang/CharSequence;I)I
+Ljava/lang/Character;->codePointBefore([CI)I
+Ljava/lang/Character;->codePointBefore(Ljava/lang/CharSequence;I)I
+Ljava/lang/Character;->codePointBefore([CII)I
+Ljava/lang/Character;->codePointCount([CII)I
+Ljava/lang/Character;->codePointCount(Ljava/lang/CharSequence;II)I
+Ljava/lang/Character;->offsetByCodePoints([CIIII)I
+Ljava/lang/Character;->offsetByCodePoints(Ljava/lang/CharSequence;II)I
+Ljava/lang/Character;->toLowerCase(I)I
+Ljava/lang/Character;->toLowerCase(C)C
+Ljava/lang/Character;->toUpperCase(C)C
+Ljava/lang/Character;->toUpperCase(I)I
+Ljava/lang/Character;->isBmpCodePoint(I)Z
+Ljava/lang/Character;->isValidCodePoint(I)Z
+Ljava/lang/Character;->compare(CC)I
+Ljava/lang/Character;->highSurrogate(I)C
+Ljava/lang/Character;->lowSurrogate(I)C
+Ljava/lang/Character;->charCount(I)I
+Ljava/lang/Character;->toChars(I[CI)I
+Ljava/lang/Character;->toChars(I)[C
+Ljava/lang/Character;->getType(C)I
+Ljava/lang/Character;->getType(I)I
+Ljava/lang/Character;->isDigit(I)Z
+Ljava/lang/Character;->isDigit(C)Z
+Ljava/lang/Character;->isSurrogate(C)Z
+Ljava/lang/Character;->isLowSurrogate(C)Z
+Ljava/lang/Character;->isHighSurrogate(C)Z
+Ljava/lang/Character;->isLetter(C)Z
+Ljava/lang/Character;->isLetter(I)Z
+Ljava/lang/Character;->isLetterOrDigit(C)Z
+Ljava/lang/Character;->isLetterOrDigit(I)Z
+Ljava/lang/Character;->isSupplementaryCodePoint(I)Z
+Ljava/lang/Character;->isSurrogatePair(CC)Z
+Ljava/lang/Character;->toCodePoint(CC)I
+Ljava/lang/Character;->isLowerCase(C)Z
+Ljava/lang/Character;->isLowerCase(I)Z
+Ljava/lang/Character;->isUpperCase(I)Z
+Ljava/lang/Character;->isUpperCase(C)Z
+Ljava/lang/Character;->isTitleCase(C)Z
+Ljava/lang/Character;->isTitleCase(I)Z
+Ljava/lang/Character;->isDefined(C)Z
+Ljava/lang/Character;->isDefined(I)Z
+Ljava/lang/Character;->isJavaLetter(C)Z
+Ljava/lang/Character;->isJavaLetterOrDigit(C)Z
+Ljava/lang/Character;->isAlphabetic(I)Z
+Ljava/lang/Character;->isIdeographic(I)Z
+Ljava/lang/Character;->isUnicodeIdentifierStart(I)Z
+Ljava/lang/Character;->isUnicodeIdentifierStart(C)Z
+Ljava/lang/Character;->isUnicodeIdentifierPart(I)Z
+Ljava/lang/Character;->isUnicodeIdentifierPart(C)Z
+Ljava/lang/Character;->isIdentifierIgnorable(C)Z
+Ljava/lang/Character;->isIdentifierIgnorable(I)Z
+Ljava/lang/Character;->toTitleCase(I)I
+Ljava/lang/Character;->toTitleCase(C)C
+Ljava/lang/Character;->digit(CI)I
+Ljava/lang/Character;->digit(II)I
+Ljava/lang/Character;->getNumericValue(I)I
+Ljava/lang/Character;->getNumericValue(C)I
+Ljava/lang/Character;->isSpace(C)Z
+Ljava/lang/Character;->isSpaceChar(C)Z
+Ljava/lang/Character;->isSpaceChar(I)Z
+Ljava/lang/Character;->isWhitespace(C)Z
+Ljava/lang/Character;->isWhitespace(I)Z
+Ljava/lang/Character;->isISOControl(C)Z
+Ljava/lang/Character;->isISOControl(I)Z
+Ljava/lang/Character;->forDigit(II)C
+Ljava/lang/Character;->getDirectionality(C)B
+Ljava/lang/Character;->getDirectionality(I)B
+Ljava/lang/Character;->isMirrored(I)Z
+Ljava/lang/Character;->isMirrored(C)Z
+
+Ljava/lang/Short;-><init>(S)V
+Ljava/lang/Short;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Short;->toString()Ljava/lang/String;
+Ljava/lang/Short;->toString(S)Ljava/lang/String;
+Ljava/lang/Short;->hashCode()I
+Ljava/lang/Short;->hashCode(S)I
+Ljava/lang/Short;->reverseBytes(S)S
+Ljava/lang/Short;->compareTo(Ljava/lang/Short;)I
+Ljava/lang/Short;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Short;->byteValue()B
+Ljava/lang/Short;->shortValue()S
+Ljava/lang/Short;->intValue()I
+Ljava/lang/Short;->longValue()J
+Ljava/lang/Short;->floatValue()F
+Ljava/lang/Short;->doubleValue()D
+# excluded: can throw under normal circumstances: Ljava/lang/Short;->valueOf(Ljava/lang/String;I)Ljava/lang/Short;
+Ljava/lang/Short;->valueOf(S)Ljava/lang/Short;
+# excluded: can throw under normal circumstances: Ljava/lang/Short;->valueOf(Ljava/lang/String;)Ljava/lang/Short;
+# excluded: can throw under normal circumstances: Ljava/lang/Short;->decode(Ljava/lang/String;)Ljava/lang/Short;
+Ljava/lang/Short;->compare(SS)I
+Ljava/lang/Short;->toUnsignedInt(S)I
+Ljava/lang/Short;->toUnsignedLong(S)J
+# excluded: can throw under normal circumstances: Ljava/lang/Short;->parseShort(Ljava/lang/String;I)S
+# excluded: can throw under normal circumstances: Ljava/lang/Short;->parseShort(Ljava/lang/String;)S
+
+Ljava/lang/Integer;-><init>(I)V
+Ljava/lang/Integer;->numberOfLeadingZeros(I)I
+Ljava/lang/Integer;->numberOfTrailingZeros(I)I
+Ljava/lang/Integer;->bitCount(I)I
+Ljava/lang/Integer;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Integer;->toString(II)Ljava/lang/String;
+Ljava/lang/Integer;->toString()Ljava/lang/String;
+Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+Ljava/lang/Integer;->hashCode(I)I
+Ljava/lang/Integer;->hashCode()I
+Ljava/lang/Integer;->min(II)I
+Ljava/lang/Integer;->max(II)I
+Ljava/lang/Integer;->reverseBytes(I)I
+Ljava/lang/Integer;->compareTo(Ljava/lang/Integer;)I
+Ljava/lang/Integer;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Integer;->byteValue()B
+Ljava/lang/Integer;->shortValue()S
+Ljava/lang/Integer;->intValue()I
+Ljava/lang/Integer;->longValue()J
+Ljava/lang/Integer;->floatValue()F
+Ljava/lang/Integer;->doubleValue()D
+Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+# excluded: can throw under normal circumstances: Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
+# excluded: can throw under normal circumstances: Ljava/lang/Integer;->valueOf(Ljava/lang/String;I)Ljava/lang/Integer;
+Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+# excluded: can throw under normal circumstances: Ljava/lang/Integer;->decode(Ljava/lang/String;)Ljava/lang/Integer;
+Ljava/lang/Integer;->compare(II)I
+Ljava/lang/Integer;->reverse(I)I
+Ljava/lang/Integer;->sum(II)I
+Ljava/lang/Integer;->toUnsignedLong(I)J
+# excluded: can throw under normal circumstances: Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+# excluded: can throw under normal circumstances: Ljava/lang/Integer;->parseInt(Ljava/lang/String;I)I
+Ljava/lang/Integer;->toUnsignedString(I)Ljava/lang/String;
+Ljava/lang/Integer;->toUnsignedString(II)Ljava/lang/String;
+Ljava/lang/Integer;->toOctalString(I)Ljava/lang/String;
+Ljava/lang/Integer;->toBinaryString(I)Ljava/lang/String;
+# excluded: can throw under normal circumstances: Ljava/lang/Integer;->parseUnsignedInt(Ljava/lang/String;)I
+# excluded: can throw under normal circumstances: Ljava/lang/Integer;->parseUnsignedInt(Ljava/lang/String;I)I
+Ljava/lang/Integer;->getInteger(Ljava/lang/String;I)Ljava/lang/Integer;
+Ljava/lang/Integer;->getInteger(Ljava/lang/String;)Ljava/lang/Integer;
+Ljava/lang/Integer;->getInteger(Ljava/lang/String;Ljava/lang/Integer;)Ljava/lang/Integer;
+Ljava/lang/Integer;->compareUnsigned(II)I
+Ljava/lang/Integer;->divideUnsigned(II)I
+Ljava/lang/Integer;->remainderUnsigned(II)I
+Ljava/lang/Integer;->highestOneBit(I)I
+Ljava/lang/Integer;->lowestOneBit(I)I
+Ljava/lang/Integer;->rotateLeft(II)I
+Ljava/lang/Integer;->rotateRight(II)I
+Ljava/lang/Integer;->signum(I)I
+
+Ljava/lang/Long;-><init>(J)V
+Ljava/lang/Long;->numberOfLeadingZeros(J)I
+Ljava/lang/Long;->numberOfTrailingZeros(J)I
+Ljava/lang/Long;->bitCount(J)I
+Ljava/lang/Long;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Long;->toString()Ljava/lang/String;
+Ljava/lang/Long;->toString(JI)Ljava/lang/String;
+Ljava/lang/Long;->toString(J)Ljava/lang/String;
+Ljava/lang/Long;->hashCode()I
+Ljava/lang/Long;->hashCode(J)I
+Ljava/lang/Long;->min(JJ)J
+Ljava/lang/Long;->max(JJ)J
+Ljava/lang/Long;->reverseBytes(J)J
+Ljava/lang/Long;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Long;->compareTo(Ljava/lang/Long;)I
+Ljava/lang/Long;->getLong(Ljava/lang/String;Ljava/lang/Long;)Ljava/lang/Long;
+Ljava/lang/Long;->getLong(Ljava/lang/String;J)Ljava/lang/Long;
+Ljava/lang/Long;->getLong(Ljava/lang/String;)Ljava/lang/Long;
+Ljava/lang/Long;->byteValue()B
+Ljava/lang/Long;->shortValue()S
+Ljava/lang/Long;->intValue()I
+Ljava/lang/Long;->longValue()J
+Ljava/lang/Long;->floatValue()F
+Ljava/lang/Long;->doubleValue()D
+# excluded: can throw under normal circumstances: Ljava/lang/Long;->valueOf(Ljava/lang/String;I)Ljava/lang/Long;
+Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+# excluded: can throw under normal circumstances: Ljava/lang/Long;->valueOf(Ljava/lang/String;)Ljava/lang/Long;
+Ljava/lang/Long;->toHexString(J)Ljava/lang/String;
+# excluded: can throw under normal circumstances: Ljava/lang/Long;->decode(Ljava/lang/String;)Ljava/lang/Long;
+Ljava/lang/Long;->compare(JJ)I
+Ljava/lang/Long;->reverse(J)J
+Ljava/lang/Long;->sum(JJ)J
+Ljava/lang/Long;->toUnsignedString(JI)Ljava/lang/String;
+Ljava/lang/Long;->toUnsignedString(J)Ljava/lang/String;
+Ljava/lang/Long;->toOctalString(J)Ljava/lang/String;
+Ljava/lang/Long;->toBinaryString(J)Ljava/lang/String;
+Ljava/lang/Long;->compareUnsigned(JJ)I
+Ljava/lang/Long;->divideUnsigned(JJ)J
+Ljava/lang/Long;->remainderUnsigned(JJ)J
+Ljava/lang/Long;->highestOneBit(J)J
+Ljava/lang/Long;->lowestOneBit(J)J
+Ljava/lang/Long;->rotateLeft(JI)J
+Ljava/lang/Long;->rotateRight(JI)J
+Ljava/lang/Long;->signum(J)I
+# excluded: can throw under normal circumstances: Ljava/lang/Long;->parseLong(Ljava/lang/String;I)J
+# excluded: can throw under normal circumstances: Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+# excluded: can throw under normal circumstances: Ljava/lang/Long;->parseUnsignedLong(Ljava/lang/String;I)J
+# excluded: can throw under normal circumstances: Ljava/lang/Long;->parseUnsignedLong(Ljava/lang/String;)J
+
+Ljava/lang/Float;-><init>(F)V
+Ljava/lang/Float;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Float;->toString(F)Ljava/lang/String;
+Ljava/lang/Float;->toString()Ljava/lang/String;
+Ljava/lang/Float;->hashCode()I
+Ljava/lang/Float;->hashCode(F)I
+Ljava/lang/Float;->min(FF)F
+Ljava/lang/Float;->max(FF)F
+Ljava/lang/Float;->floatToRawIntBits(F)I
+Ljava/lang/Float;->floatToIntBits(F)I
+Ljava/lang/Float;->intBitsToFloat(I)F
+Ljava/lang/Float;->compareTo(Ljava/lang/Float;)I
+Ljava/lang/Float;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Float;->byteValue()B
+Ljava/lang/Float;->shortValue()S
+Ljava/lang/Float;->intValue()I
+Ljava/lang/Float;->longValue()J
+Ljava/lang/Float;->floatValue()F
+Ljava/lang/Float;->doubleValue()D
+Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+# excluded: can throw under normal circumstances: Ljava/lang/Float;->valueOf(Ljava/lang/String;)Ljava/lang/Float;
+Ljava/lang/Float;->toHexString(F)Ljava/lang/String;
+Ljava/lang/Float;->compare(FF)I
+Ljava/lang/Float;->isNaN(F)Z
+Ljava/lang/Float;->isNaN()Z
+# excluded: can throw under normal circumstances: Ljava/lang/Float;->parseFloat(Ljava/lang/String;)F
+Ljava/lang/Float;->isInfinite(F)Z
+Ljava/lang/Float;->isInfinite()Z
+Ljava/lang/Float;->isFinite(F)Z
+Ljava/lang/Float;->sum(FF)F
+
+Ljava/lang/Double;-><init>(D)V
+Ljava/lang/Double;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Double;->toString(D)Ljava/lang/String;
+Ljava/lang/Double;->toString()Ljava/lang/String;
+Ljava/lang/Double;->hashCode()I
+Ljava/lang/Double;->hashCode(D)I
+Ljava/lang/Double;->min(DD)D
+Ljava/lang/Double;->max(DD)D
+Ljava/lang/Double;->doubleToRawLongBits(D)J
+Ljava/lang/Double;->doubleToLongBits(D)J
+Ljava/lang/Double;->longBitsToDouble(J)D
+Ljava/lang/Double;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Double;->compareTo(Ljava/lang/Double;)I
+Ljava/lang/Double;->byteValue()B
+Ljava/lang/Double;->shortValue()S
+Ljava/lang/Double;->intValue()I
+Ljava/lang/Double;->longValue()J
+Ljava/lang/Double;->floatValue()F
+Ljava/lang/Double;->doubleValue()D
+# excluded: can throw under normal circumstances: Ljava/lang/Double;->valueOf(Ljava/lang/String;)Ljava/lang/Double;
+Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+Ljava/lang/Double;->toHexString(D)Ljava/lang/String;
+Ljava/lang/Double;->compare(DD)I
+Ljava/lang/Double;->isNaN(D)Z
+Ljava/lang/Double;->isNaN()Z
+Ljava/lang/Double;->isInfinite(D)Z
+Ljava/lang/Double;->isInfinite()Z
+Ljava/lang/Double;->isFinite(D)Z
+Ljava/lang/Double;->sum(DD)D
+# excluded: can throw under normal circumstances: Ljava/lang/Double;->parseDouble(Ljava/lang/String;)D
+
+Ljava/lang/Number;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Number;->toString()Ljava/lang/String;
+Ljava/lang/Number;->hashCode()I
+Ljava/lang/Number;->byteValue()B
+Ljava/lang/Number;->shortValue()S
+Ljava/lang/Number;->intValue()I
+Ljava/lang/Number;->longValue()J
+Ljava/lang/Number;->floatValue()F
+Ljava/lang/Number;->doubleValue()D
+
+Ljava/lang/Math;->abs(I)I
+Ljava/lang/Math;->abs(D)D
+Ljava/lang/Math;->abs(F)F
+Ljava/lang/Math;->abs(J)J
+Ljava/lang/Math;->sin(D)D
+Ljava/lang/Math;->cos(D)D
+Ljava/lang/Math;->tan(D)D
+Ljava/lang/Math;->atan2(DD)D
+Ljava/lang/Math;->sqrt(D)D
+Ljava/lang/Math;->log(D)D
+Ljava/lang/Math;->log10(D)D
+Ljava/lang/Math;->pow(DD)D
+Ljava/lang/Math;->exp(D)D
+Ljava/lang/Math;->min(JJ)J
+Ljava/lang/Math;->min(DD)D
+Ljava/lang/Math;->min(FF)F
+Ljava/lang/Math;->min(II)I
+Ljava/lang/Math;->max(DD)D
+Ljava/lang/Math;->max(FF)F
+Ljava/lang/Math;->max(JJ)J
+Ljava/lang/Math;->max(II)I
+Ljava/lang/Math;->addExact(JJ)J
+Ljava/lang/Math;->addExact(II)I
+Ljava/lang/Math;->decrementExact(J)J
+Ljava/lang/Math;->decrementExact(I)I
+Ljava/lang/Math;->incrementExact(J)J
+Ljava/lang/Math;->incrementExact(I)I
+Ljava/lang/Math;->multiplyExact(II)I
+Ljava/lang/Math;->multiplyExact(JJ)J
+Ljava/lang/Math;->negateExact(J)J
+Ljava/lang/Math;->negateExact(I)I
+Ljava/lang/Math;->subtractExact(II)I
+Ljava/lang/Math;->subtractExact(JJ)J
+Ljava/lang/Math;->scalb(DI)D
+Ljava/lang/Math;->scalb(FI)F
+Ljava/lang/Math;->copySign(FF)F
+Ljava/lang/Math;->copySign(DD)D
+Ljava/lang/Math;->getExponent(D)I
+Ljava/lang/Math;->getExponent(F)I
+Ljava/lang/Math;->signum(D)D
+Ljava/lang/Math;->signum(F)F
+Ljava/lang/Math;->asin(D)D
+Ljava/lang/Math;->acos(D)D
+Ljava/lang/Math;->atan(D)D
+Ljava/lang/Math;->toRadians(D)D
+Ljava/lang/Math;->toDegrees(D)D
+Ljava/lang/Math;->cbrt(D)D
+Ljava/lang/Math;->IEEEremainder(DD)D
+Ljava/lang/Math;->ceil(D)D
+Ljava/lang/Math;->floor(D)D
+Ljava/lang/Math;->rint(D)D
+Ljava/lang/Math;->round(D)J
+Ljava/lang/Math;->round(F)I
+Ljava/lang/Math;->random()D
+Ljava/lang/Math;->toIntExact(J)I
+Ljava/lang/Math;->floorDiv(II)I
+Ljava/lang/Math;->floorDiv(JJ)J
+Ljava/lang/Math;->floorMod(II)I
+Ljava/lang/Math;->floorMod(JJ)J
+Ljava/lang/Math;->ulp(F)F
+Ljava/lang/Math;->ulp(D)D
+Ljava/lang/Math;->sinh(D)D
+Ljava/lang/Math;->cosh(D)D
+Ljava/lang/Math;->tanh(D)D
+Ljava/lang/Math;->hypot(DD)D
+Ljava/lang/Math;->expm1(D)D
+Ljava/lang/Math;->log1p(D)D
+Ljava/lang/Math;->nextAfter(DD)D
+Ljava/lang/Math;->nextAfter(FD)F
+Ljava/lang/Math;->nextUp(D)D
+Ljava/lang/Math;->nextUp(F)F
+Ljava/lang/Math;->nextDown(D)D
+Ljava/lang/Math;->nextDown(F)F
+
+# most entries below are theoretically unsafe; however, in most practical cases, they are okay to be considered CI/SEF
+# feel free to tweak (uncomment or comment) as needed
+Ljava/lang/Enum;->name()Ljava/lang/String;
+Ljava/lang/Enum;->equals(Ljava/lang/Object;)Z
+Ljava/lang/Enum;->toString()Ljava/lang/String;
+Ljava/lang/Enum;->hashCode()I
+Ljava/lang/Enum;->compareTo(Ljava/lang/Object;)I
+Ljava/lang/Enum;->compareTo(Ljava/lang/Enum;)I
+Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+Ljava/lang/Enum;->getDeclaringClass()Ljava/lang/Class;
+Ljava/lang/Enum;->ordinal()I
+
+# for all objects
+*->hashCode()I
+*->toString()Ljava/lang/String;
+# collections, maps, etc.
+*->size()I
+*->isEmpty()Z
+# exceptions
+Ljava/lang/Throwable;-><init>()V
+Ljava/lang/Exception;-><init>()V
+Ljava/lang/RuntimeException;-><init>()V
+Ljava/lang/IllegalArgumentException;-><init>()V
+Ljava/lang/NullPointerException;-><init>()V
+*->getCause()Ljava/lang/Throwable;
+*->getMessage()Ljava/lang/String;
+*->getLocalizedMessage()Ljava/lang/String;
+# enums
+*->name()Ljava/lang/String;
+*->ordinal()I
+# buffers
+*->capacity()I
+*->limit()I
+*->position()I
+*->remaining()I
+
+# Class
+#Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+#Ljava/lang/Class;->forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
+Ljava/lang/Class;->toString()Ljava/lang/String;
+Ljava/lang/Class;->getProtectionDomain()Ljava/security/ProtectionDomain;
+Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+Ljava/lang/Class;->isInstance(Ljava/lang/Object;)Z
+Ljava/lang/Class;->getModifiers()I
+Ljava/lang/Class;->isInterface()Z
+Ljava/lang/Class;->isArray()Z
+Ljava/lang/Class;->isPrimitive()Z
+Ljava/lang/Class;->getSuperclass()Ljava/lang/Class;
+Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+Ljava/lang/Class;->getName()Ljava/lang/String;
+#Ljava/lang/Class;->asSubclass(Ljava/lang/Class;)Ljava/lang/Class;
+#Ljava/lang/Class;->cast(Ljava/lang/Object;)Ljava/lang/Object;
+Ljava/lang/Class;->desiredAssertionStatus()Z
+Ljava/lang/Class;->getAnnotatedInterfaces()[Ljava/lang/reflect/AnnotatedType;
+Ljava/lang/Class;->getAnnotatedSuperclass()Ljava/lang/reflect/AnnotatedType;
+#Ljava/lang/Class;->getAnnotation(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
+Ljava/lang/Class;->getAnnotations()[Ljava/lang/annotation/Annotation;
+#Ljava/lang/Class;->getAnnotationsByType(Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;
+Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;
+Ljava/lang/Class;->getClasses()[Ljava/lang/Class;
+#Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+Ljava/lang/Class;->getConstructors()[Ljava/lang/reflect/Constructor;
+#Ljava/lang/Class;->getDeclaredAnnotation(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
+Ljava/lang/Class;->getDeclaredAnnotations()[Ljava/lang/annotation/Annotation;
+#Ljava/lang/Class;->getDeclaredAnnotationsByType(Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;
+Ljava/lang/Class;->getDeclaredClasses()[Ljava/lang/Class;
+#Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+Ljava/lang/Class;->getDeclaredConstructors()[Ljava/lang/reflect/Constructor;
+#Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+Ljava/lang/Class;->getDeclaredFields()[Ljava/lang/reflect/Field;
+#Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+Ljava/lang/Class;->getDeclaredMethods()[Ljava/lang/reflect/Method;
+Ljava/lang/Class;->getDeclaringClass()Ljava/lang/Class;
+Ljava/lang/Class;->getEnclosingClass()Ljava/lang/Class;
+Ljava/lang/Class;->getEnclosingConstructor()Ljava/lang/reflect/Constructor;
+Ljava/lang/Class;->getEnclosingMethod()Ljava/lang/reflect/Method;
+Ljava/lang/Class;->getEnumConstants()[Ljava/lang/Object;
+#Ljava/lang/Class;->getField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+Ljava/lang/Class;->getFields()[Ljava/lang/reflect/Field;
+Ljava/lang/Class;->getGenericInterfaces()[Ljava/lang/reflect/Type;
+Ljava/lang/Class;->getGenericSuperclass()Ljava/lang/reflect/Type;
+Ljava/lang/Class;->getInterfaces()[Ljava/lang/Class;
+#Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+Ljava/lang/Class;->getMethods()[Ljava/lang/reflect/Method;
+Ljava/lang/Class;->getPackage()Ljava/lang/Package;
+#Ljava/lang/Class;->getResource(Ljava/lang/String;)Ljava/net/URL;
+#Ljava/lang/Class;->getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;
+Ljava/lang/Class;->getSigners()[Ljava/lang/Object;
+Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+Ljava/lang/Class;->getTypeName()Ljava/lang/String;
+Ljava/lang/Class;->getTypeParameters()[Ljava/lang/reflect/TypeVariable;
+Ljava/lang/Class;->isAnnotation()Z
+Ljava/lang/Class;->isAnnotationPresent(Ljava/lang/Class;)Z
+Ljava/lang/Class;->isAnonymousClass()Z
+Ljava/lang/Class;->isEnum()Z
+Ljava/lang/Class;->isLocalClass()Z
+Ljava/lang/Class;->isMemberClass()Z
+Ljava/lang/Class;->isSynthetic()Z
+#Ljava/lang/Class;->newInstance()Ljava/lang/Object;
+Ljava/lang/Class;->toGenericString()Ljava/lang/String;
+
+# add more entries below, including app-specific classes and methods
+# ...

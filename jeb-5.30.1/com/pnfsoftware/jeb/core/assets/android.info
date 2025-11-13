@@ -1,0 +1,6 @@
+- android-classes.jar        : platforms/android-35/android.jar!*.class (modified)
+- android-attrs.xml          : platforms/android-35/data/res/values/attrs.xml
+- android-attrs_manifest.xml : platforms/android-35/data/res/values/attrs_manifest.xml
+- android-resources.zip      : platforms/android-35/android.jar!resources.arsc
+- afwpn.bin                  : from android-35
+- afwpi.bin                  : from android-34
