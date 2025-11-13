@@ -1,0 +1,70 @@
+package com.pnfsoftware.jebglobal;
+
+public class Le {
+   public static final ZW pC = new ZW(13510798882111488L);
+   public static final ZW A = new ZW(4503599627370496L);
+   public static final ZW kS = new ZW(9007199254740992L);
+   public static final ZW wS = new ZW(9007199254740992L);
+   public static final ZW UT = new ZW(131072L);
+   public static final ZW E = new ZW(262144L);
+   public static final ZW sY = E;
+   public static final ZW ys = new ZW(524288L);
+   public static final ZW ld = ze.kS;
+   public static final ZW gp = new ZW(2199023255552L);
+   public static final ZW oT = new ZW(1099511627776L);
+   public static final ZW fI = new ZW(52776558133248L);
+   public static final ZW WR = new ZW(87960930222080L);
+   public static final ZW NS = new ZW(105553116266496L);
+   public static final ZW vP = new ZW(123145302310912L);
+   public static final ZW xC = new ZW(123145302310912L);
+   public static final ZW ED = new ZW(4398046511104L);
+   public static final ZW Sc = new ZW(4398046511104L);
+   public static final ZW ah = new ZW(17592186044416L);
+   public static final ZW eP = new ZW(1125899906842624L);
+   public static final ZW UO = new ZW(1407374883553280L);
+   public static final ZW Ab = new ZW(844424930131968L);
+   public static final ZW rl = new ZW(65536L);
+   public static final ZW z = new ZW(35184372088832L);
+   public static final ZW Ek = new ZW(128L);
+   public static final ZW hK = new ZW(68719476736L);
+   public static final ZW Er = new ZW(137438953472L);
+   public static final ZW FE = new ZW(35184372088832L);
+   public static final ZW Aj = new ZW(281474976710656L);
+   public static final ZW EX = new ZW(206158430208L);
+   public static final ZW LM = new ZW(256L);
+   public static final ZW mv = new ZW(1024L);
+   public static final ZW sO = new ZW(2199023255552L);
+   public static final ZW os = new ZW(524288L);
+   public static final ZW Cu = new ZW(524288L);
+   public static final ZW hZ = new ZW(562949953421312L);
+   public static final ZW UW = new ZW(17179869184L);
+   public static final ZW PR = new ZW(2199023255552L);
+   public static final ZW cX = new ZW(6597069766656L);
+   public static final ZW DQ = new ZW(12884901888L);
+   public static final ZW ZN = new ZW(70368744177664L);
+   public static final ZW OB = new ZW(3298534883328L);
+   public static final ZW pF = new ZW(4294967296L);
+   public static final ZW Bc = new ZW(35184372088832L);
+   public static final ZW OI = new ZW(274877906944L);
+   public static final ZW Bf = new ZW(8589934592L);
+   public static final ZW Pe = new ZW(131072L);
+   public static final ZW ck = E;
+   public static final ZW RW = new ZW(131328L);
+   public static final ZW e = E;
+   public static final ZW xM = new ZW(131072L);
+   public static final ZW kU = new ZW(131072L);
+   public static final ZW Kq = E;
+   public static final ZW go = E;
+   public static final ZW JF = E;
+   public static final ZW Nq = E;
+   public static final ZW pg = E;
+   public static final ZW gj = E;
+   public static final ZW ZD = E;
+   public static final ZW DL = new ZW(140737488355328L);
+   public static final ZW UH = new ZW(158329674399744L);
+   public static final ZW VD = new ZW(175921860444160L);
+
+   public static boolean pC() {
+      return true;
+   }
+}

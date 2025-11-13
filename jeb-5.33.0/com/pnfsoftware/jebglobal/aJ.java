@@ -1,0 +1,35 @@
+package com.pnfsoftware.jebglobal;
+
+class aJ implements jp {
+   private int[] pC = null;
+
+   public aJ(int... var1) {
+      this.pC = var1;
+   }
+
+   @Override
+   public String pC(tz var1, byte[] var2) {
+      int[] var3 = this.pC;
+      if (this.pC.length == 1 && this.pC[0] == -1) {
+         var3 = new int[var1.kS()];
+         int var4 = 0;
+
+         while (var4 < var1.kS()) {
+            var3[var4] = var4++;
+         }
+      }
+
+      for (int var7 : var3) {
+         gZ var8 = (gZ)var1.pC(var7);
+         if (var8.E(var2)) {
+            return "Register n " + var7 + " should not be PC";
+         }
+
+         if (var8.UT(var2) == 0 && var8.A(var2) == (var8 instanceof sQ ? 30 : 14)) {
+            return "Register n " + var7 + " should not be LR";
+         }
+      }
+
+      return null;
+   }
+}
