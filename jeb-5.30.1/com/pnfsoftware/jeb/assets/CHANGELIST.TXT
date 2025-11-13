@@ -1,0 +1,2653 @@
+>>> mod by CXV (5.30.1) (August 9, 2025)
+
+Mod info(changes):
+- fix all integrity checks\timebomb
+- Time-limited sessions (fixed)
+- Requires an Internet connection (fixed)
+- dexdec: fix string decrypt via emulation
+- dexdec: instruction conversion (recovered)
+- gui: Usage of the clipboard is disallowed (fixed)
+- jdb2: Saving or loading projects is disabled (fixed)
+- android debug (enabled)
+- android native debug (enabled)
+- avrdec: decompiler (enabled)
+- Decompiler exporter (fixed)
+- CF-unflattener, generic unpacker, unvirtualizer, native emulator, and plugins (fixed)
+- callgraph enabled
+- telemetry disabled
+
+
+>>> JEB 5.30.1 (June 14, 2025)
+
+- jdb2: reload performance: fixing a slowdown introduced in version 5.30 
+
+
+>>> JEB 5.30 (June 11, 2025)
+
+- arm parser: upgrades
+- dex: fix: persist the pools mappings (in DexFileParser objects)
+- dexdec: minor updates
+- dart: added support for parsing v3.8 snapshots
+- persistence/jdb2: a minor fix
+- gui: maintenance updates
+
+
+>>> JEB 5.29 (May 4, 2025)
+
+- dexdec: more performance improvements
+- dexdec: ir conversion: better synthetic names for invoke-dynamic calls
+- dexdec: ir optimizer: improved try-finally reconstruction
+- dexdec: emulator: api additions, including setWatchdog/getWatchdog
+- dexdec: honor missed time-outs in some optimizers
+- arm parser: upgrades
+- dart: added support for parsing v3.7 snapshots
+- apk: support for signing block version 3.1
+- android: arsc: parser hardening
+- android: axml: parser hardening
+- zip: parser hardening
+- aar (android library): proper identification
+
+
+>>> JEB 5.28 (April 6, 2025)
+
+- dexdec: performance improvements
+- dexdec: better memory management for large decomps
+- dexdec: optimizers: multiple upgrades
+- dexdec: api: ir cache: added IDexDecompilerUnit.retrieveCachedIR and co.
+- dexdec: api: emulator: added IDState.setFieldAccessPolicy and co.
+- dexdec: api: emulator: added IDState.setStrictClassInit and co.
+- data flow analysis: performance improvements and better caching
+- dex: callgraph: support for async. generation with grace period
+- dex: context database: support for async. generation with grace period
+- native code: analyzer: upgrades
+- arm parser: upgrades
+
+
+>>> JEB 5.27 (March 20, 2025)
+
+- dexdec: optimizers: multiple upgrades
+- dexdec: fixes and performance improvements
+- dexdec: better collapse of non-important code
+- dexdec: api: added formatDecompilationState()
+- dex: xrefs recording: fix: missing some callsite refs
+- arsc: added support for more axml tricks
+- native code: analyzer: upgrades
+- arm parser: upgrades
+- gui: tasks: details provider (used by dexdec)
+- program: fix: --config was disregarded
+
+
+>>> JEB 5.26 (February 22, 2025)
+
+- dexdec: code unvirtualizer: upgrades
+- dexdec: global program analysis and fields-value analysis: upgrades 
+- dexdec: mixed boolean/arithmetic (mba) expressions resolver: upgrades
+- dexdec: control-flow deobfuscator: upgrades
+- dexdec: un-aliaser: upgrades
+- dexdec: improved many other multiple ir optimizers
+- dexdec: emulator and emulator-backed optimizers: upgrades
+- dexdec: api additions: emulator hooks (added missing getField, examineFieldValue)
+- dex: move-to action: fixes related to rename
+- dex: ci/sef db: added NONE_SAFE (= NONE + "no throw")
+- dex: parser: support for version 41 with dex containers
+- dex: other updates
+- native code analyzer: updates
+- arm: upgrades
+- zip: parser updates to cover more mangled cases
+- gui: move-to action: retrieve default destination value
+- gui: code hierarchy: execution time failsafe for package expansion
+- gui: show all comments: persist 'hide meta comments' state
+- gui: bug fixes
+
+
+>>> JEB 5.25 (January 14, 2025)
+
+- dexdec: emulator: updates
+- dexdec: ir optimizers: updates
+- apk: arsc: updates
+- dart: support for parsing dart 3.6.0 aot snapshots
+- native code parser: some fixes
+- gui: quick-search: fixes
+- gui: export: updates
+- gui: other fixes
+- gui: mini-game: added Snake
+
+
+>>> JEB 5.24 (January 6, 2025)
+
+- localization to 20+ languages
+- dexdec: fixes
+- xml: fixes
+- multi-threading: fixes
+- gui: fixes
+
+
+>>> JEB 5.23 (December 24, 2024)
+
+- dexdec: ir optimizers: improvements, additions, some fixes
+- dexdec: ast optimizers: some fixes
+- dexdec: ast: washed-out rendering for items marked as such (e.g. N/A fields, inlined methods, etc.)
+- dexdec: api: added IJavaDefinition.getCoordinates()
+- gendec: ir optimizers: some fixes
+- debuggers: setup-info: added pretend-debuggable flag
+- gui: debuggers: support 'Pretend Debuggable' in 'Attach Debugger' dialog
+- gui: themes: improvements; legacy themes are ported (named 'ported*' in the dialog)
+- gui: quick-search: improvements
+- gui: interactive text buffers: support for disabled lines
+- gui: launcher: graceful failure if attempted to run in non-UI environment is detected
+- other fixes
+
+
+>>> JEB 5.22 (December 10, 2024)
+
+- important fix: JDB2 deserialization regression
+
+
+>>> JEB 5.21 (December 9, 2024)
+
+- dexdec: ir optimizers: improvements
+- dexdec: emulator: improvements
+- dexdec: performance improvements
+- dexdec: bug fixes
+- arm, arm64: parser upgrades
+- gui: performance improvements
+- gui: themes, styles: upgrades, more built-in themes
+! runtime: requires a jdk 17 or above
+
+
+>>> JEB 5.20 (November 12, 2024)
+
+- mostly tweaks and fixes ironing out a few bugs introduced in the previous releases
+
+
+>>> JEB 5.19 (October 29, 2024)
+
+- dexdec: ir: added mixed boolean-arithmetic expressions simplifier (opaque mba expression breaker)
+- dexdec: ir: added pattern-matching and pattern-based optimizer class
+- dexdec: ir: upgrades and fixes to the opaque predicate breaker
+- dexdec: ir: upgrades to various control flow obfuscation cleaner optimizers
+- dexdec: ir: multiple upgrades to other ir optimizers
+- dexdec: ast: some optimizer updates
+- dexdec: option to disable all inliner-type optimizers (api reference: IDOptimizer.INLINER tag)
+- dexdec: api: added specific AbstractDCollectionOptimizer for multiple ir optimizations
+- arm: parser updates
+- arm SVE: additions
+- unmangler: fixes
+- dex: minor tweaks and fixes
+- arsc: fix: do not hard-fail in some recoverable cases
+- arsc: tweak: strings-count adjustments: malformed cases with styles-count
+- android: upgraded framework and derived databases to android 15 (api level 35)
+- debugger: dalvik: support for separate watchpoints (break-on-field-read, break-on-field-write)
+- debugger: android: bundling the latest lldb-server 19.0.0 from NDK 28.0
+- java converter: upgrading d8.jar to 8.6.2 from SDK API 35
+- gui: debugger menu: added entries break on field read/write 
+- gui: some fixes
+- non-gui: a JDK 17 is recommended for all jobs and clients (not just the gui client)
+
+
+>>> JEB 5.18 (October 7, 2024)
+
+- dexdec: added deobfuscation rating on decomp output (ref: blog)
+- dexdec: generic control-flow obfuscation cleaner: upgrades
+- dexdec: opaque predicate resolver: upgrades
+- dexdec: fat-routine inliner: added optimizer
+- dexdec: control-flow unflattener: upgrades
+- dexdec: generic method inliner: upgrades
+- dexdec: all optimizers (ir, ast): fixes and updates
+- arm: sve subset: parser updates
+- action: added 'collapse' action, currently supported for dexdec decomps only
+- csv/tsv: special rendering
+
+
+>>> JEB 5.17 (September 17, 2024)
+
+- dexdec: optimizers upgrades and fixes
+- dexdec: CF unflattener: upgrades
+- arm: updates
+- elf: updates
+- gui: thumbnail explorer: updates
+- gui: ui framework update (based on E4.33) 
+
+
+>>> JEB 5.16 (August 26, 2024)
+
+- dexdec: fixes for problems introduced in the previous release
+- arsc: support for offset16 encodings in tables and compact resource entries
+- arsc: support resource-config entries as low as 16 bytes
+- zip: fail-safe reader: improvements
+- dart: added support for version 3.5
+- dart: some fixes for parsers version 3.0-3.4 
+
+
+>>> JEB 5.15 (August 21, 2024)
+ 
+- dexdec: stronger reconstruction for try-with-resources and try-finally
+- dexdec: better structuring
+- dexdec: new ir and ast optimizers
+- dexdec: api: see IJavaTry.getResourceAcqs() et al.
+- dexdec: fixes
+- gendec: fixes
+- arm: updates and fixes
+- axml: fixes
+- gui: quicksearch: upgrades
+- gui: fixes
+- floating controller: allow retry and save-and-exit if too many seats are used
+
+
+>>> JEB 5.14 (June 12, 2024)
+
+- dexdec: optimizers: multiple updates
+- dexdec: added option GenerateSpecialMetaComments
+- linux emulator: bug fix
+- arm analyzer: upgrades
+- apk: string resources helper: support for preferred locales
+- apk: makeapkdebug: added support to force-set extractNativeLibs to true
+- floating controller: increased period check from 10 to 45 seconds
+- gui: ui framework update (based on E4.32)
+- gui: fixes
+
+
+>>> JEB 5.13 (May 30, 2024)
+
+- dexdec: reconstruct try-with-resources, try-with-resources-with-finally
+- dexdec: better structuring
+- dexdec: more optimizers and related improvements (ir, ast)
+- dexdec: emulator: some fixes
+- dexdec: api: updates to support try-with-resource
+- gendec: some ir optimizer updates
+- native code analysis: upgrades
+- arm analyzer: upgrades
+- dex: api: class object: added getDexFileIndex()
+- apk: debugging: ignore custom cmdSet -57 for ddms (ref: blog)
+- dart: added support for 3.4
+- processor: better handler overly large files and archives
+- gui: ui framework update (version 4.32RC1 fixing issues on macOS)
+
+
+>>> JEB 5.12 (April 2, 2024)
+
+- dexdec: performance improvements
+- dexdec: emulator: some fixes
+- dexdec: ast: option to skip the generation of the 'this.' prefix when possible
+- dexdec: ast: lambda reconstruction: some hardening
+- arm analyzer: additions
+- native code analyzer: some fixes
+- dex: callgraph generation: option for a timeout (useful on very large apps)
+- dex: object pool: concurrency friendly iterators
+- dex: move-to action: important fixes related to refactoring member classes
+- arsc: android xml: support for more malformations and oddities
+- apk: faster identification/checks for very large archives
+- decompiler exporters: write files during the decompilation (no api change)
+- gui: additional progress in the pop-up information when decompiling
+- gui: api: form dialogs (re: sample scripts RequestUserInputWithForm.py et al.)
+- gui: workaround for a browser-related bug in swt 4.31 manifesting when using the omnibox
+- gui: some fixes
+
+
+>>> JEB 5.11 (March 19, 2024)
+
+- dexdec: emulator, sandbox: upgrades and performance improvements
+- dexdec: important fix for a resource leak
+- linux emulator: improvements and additions
+- apk: generic unpacker: upgrades, additional hooks in api, monitor for report generation
+- gendec: some fixes
+- arm: multiple improvements
+- apk: arsc: handle more malformations in axml and arsc in general
+- dex: performance improvements on large files
+- dex: added option CIDBMethodCountThresholdNoRegen
+- dex: do not hard-fail for multi-dex where some classesX.dex are malformed
+- dart: added support for 3.3
+- gui: android: generic unpacker: option to generate the unpacker report
+- gui: framework update (version 4.31)
+- gui: other small updates
+
+
+>>> JEB 5.10 (February 27, 2024)
+
+- dexdec/apk: generic unpacker: multiple upgrades, api additions
+- dexdec: emulator: upgrades and performance improvements
+- linux emulator: improvements
+- arm: switch detection: improvements
+- gui: android: generic unpacker: allow unpacked dex/so integration and analysis
+- gui: some cleanup and fixes
+- gui: quick-search: fix wrap-around searches
+
+
+>>> JEB 5.9 (February 7, 2024)
+
+- dexdec/apk: generic unpacker: new component for apk, attempt to recover dynamically dropped dex files 
+- dexdec: emulator: multiple additions for the unpacker; some fixes
+- dexdec: optimizers: better switch-on-string ir reconstructor
+- gendec: linux emulator: upgrades
+- arm: upgrades to the decompiler and switch analysis
+- elf: dwarf: upgrades
+- axml: tweaks to handle more oddities
+- gui: the generic unpacker for apk is accessible from the 'android' menu
+
+
+>>> JEB 5.8 (January 9, 2024)
+
+- gendec: updates, fixes
+- gendec: ast: updated some optimizers
+- apk: debugging: defaults to using lldbserver 17
+- arm: switch detection: fixes
+
+
+>>> JEB 5.7 (December 19, 2023)
+
+- gendec: updates, minor fixes
+- gendec: decompiler extensions: added isOpaquePointerType()
+- native: code model: fix: fixed a corner-case for getInternalMethod(addr, addrIsEP=false)
+- dart: added support for version 3.2
+- arm: switch analysis heuristic: fix: disabled heuristic was not honored 
+- elf: dwarf: upgrades
+- typelibs: win32: updates
+- gui: android global analysis: added exclusion filter
+- gui: script editor: tweaks
+- gui: filtered tables/trees: fix: double-press enter issue for filtering
+
+
+>>> JEB 5.6 (December 6, 2023)
+
+- gendec: multiple improvements (fixes, upgrades, more optimizers, api additions)
+- native: code analyzer: improvements
+- native: calling conventions: some mods and fixes, api updates
+- arm: disassembler additions, decompiler updates
+- x86: decompiler: some fixes
+- mips: decompiler: some fixes
+- evm: decompiler: fix: routine stack analyzer
+- s7: mc7 decompiler: fix
+- apk: debugging: support for alternate name for `su` tool
+- apk: debugging: attempt secondary method to retrieve device processes
+- android: ndk: typelibs for ndk r26.1
+- dexdec: added setting decompiler-thread-count (defaults to number of logical processors)
+- dexdec: selectively disable unsafe IR optimizers at the method level by adding "[no-unsafe-opt]" to the method comments 
+- xml: added rendering settings indent-length, inline-attributes
+- cart: added support for cart archives (zlib-compressed rc4-encrypted files for malware transport)
+- gui: jeb assistant: can be used for decompiled classes to provide class and method name hints
+- gui: constants Selector dialog: fix: empty rendering on Windows
+- gui: filtered tables: fix: slow rendering on large tables containing special unicode characters
+- gui: ethereum contract selector: updated list
+- gui: framework update (version 4.30)
+
+
+>>> JEB 5.5 (November 2, 2023)
+
+- gendec: multiple improvements, decompiler updates
+- gendec: support for external script plugins (Java, Python) (menu Native, Decompiler Plugins...)
+- typelibs: updated type libraries
+- arm: upgrades
+- doc: improved API documentation (www.pnfsoftware.com/jeb/apidoc)
+- plugins: project skeleton generator scripts for Eclipse IDE and IntelliJ IDEA
+- other fixes
+
+
+>>> JEB 5.4 (October 18, 2023)
+
+- gendec: multiple improvements and decompiler updates
+- arm: updates
+- dart: fixes and support for version 3.1
+- typelibs: updates
+- xml: some fixes
+- html: some fixes
+- other fixes
+
+
+>>> JEB 5.3 (September 26, 2023)
+
+- dexdec: updates
+- gendec: updates
+- arm: updates
+- gui: framework update
+
+
+>>> JEB 5.2 (August 30, 2023)
+
+- gui: assistant: the "JEB Assistant" can be used to infer decompiled method and parameter names (see: www.pnfsoftware.com/jeb/assistant) 
+- gui: styles: pick-up changes and auto-refresh views
+- gui: line-wrapping: fixed
+- arsc: allow empty closing tags
+
+
+>>> JEB 5.1 (August 17, 2023)
+
+- dexdec: reverted a regression introduced in 5.0
+
+
+>>> JEB 5.0 (August 7, 2023)
+
+! runtime: jeb 5 requires a jdk 17
+- dexdec: optimizer improvements
+- dexdec: better reporting for time-outs
+- dex: improvements
+- android typelibs: updated for ndk r25
+- android linux emulator: improvements
+- arsc: support more mangling, better auto-naming for duplicates
+- arm: improved routines detection
+- wasm: updates and added missing ir conversions for trunc_sat_fxxx
+- zip: fail-safe reader: improvements
+- core: faster engines (back-end) initialization
+- gui: framework upgrades: the gui should behave better with 'exotic' linux systems
+- gui: faster code hierarchy widgets
+- gui: new widgets for type hierarchy and method overrides
+- gui: type hierarchy and method overrides have their own panels
+- gui: cfg rendering: better rendering and performance improvements
+- gui: performance improvements for event-triggered refresh
+- gui: bonus/summer game: sudoku for programmers, a.k.a. hexaku
+
+
+>>> JEB 4.32 (June 13, 2023)
+
+- dexdec: enable_native_code_emulator now defaults to true
+- dexdec: native emulator: additional support methods
+- dexdec: emulator: improvements, support for bridge methods
+- dexdec: ir control-flow unflattener: updates
+- dexdec: ir unreflector: improvements
+- dexdec: ir optimizers: new optimizers; some fixes
+- android modules: helper files: generated from android 14 (api level 34)
+- dex: debug info: do not fail on bad var-ends, bad var-restarts
+- dex: disassembly: truncate overly long prototypes
+- arm: routine detection improvements
+- elf: hardened parsing when sections are invalid
+- dart: support for dart 3.0.x (flutter 3.10+)
+- zip: cover cases of bad compression methods
+- gui: some fixes
+- !! important note to JDK 8 users: plan your upgrade to JDK 11 (or above, but <=17), upcoming JEB updates will require that
+
+
+>>> JEB 4.31 (May 19, 2023)
+
+- dexdec: emulator/sandbox: major improvements, incl. performance improvements
+- gendec: android-linux emulator: major improvements, incl. api additions
+- emulators: api additions (re: IDState, IEmulatedAndroid / EState, EEmulator)
+- dexdec: IR optimizers: some improvements
+- arm64: additions, incl. missing v8/v9 instructions and additional IR conversions
+- elf: cover additional corner-cases in the dynamic program entry
+- native: virtual memory: added lazy-memory-provider, multi-shims, change-recorder to api
+- zip fail-safe parser: improvements
+
+
+>>> JEB 4.30 (April 13, 2023)
+
+- dexdec: plugin: RecoverRemovedDexConstantsPlugin (GUI: File, Engines, ...)
+- dexdec: plugin: RecoverRegisteredNativesPlugin (GUI: File, Engines, ...)
+- dexdec: emulator, native emulator: performance improvements, additional apis
+- dexdec: improvements
+- arm: improvements and fixes
+- x86: improvements and fixes
+
+
+>>> JEB 4.29 (April 4, 2023)
+
+- dexdec: bridge for native code emulation (see blog)
+  (this large update allows the emulator to process native code invoked through the JNI)
+- dexdec: api additions (mostly to IDState, see also IDEmuClass and IDEmuObject)
+- dexdec: fixes and tweaks
+- apk: arsc: tweaks and workarounds for new obfuscation methods
+- dex: auto-renaming: fix: do not rename overridden methods whose parent is defined externally
+- native code analysis pipeline: improvements
+- gendec: emulator: improvements (api: see EEmulator and related)
+- arm: improvements and fixes
+- arm: converter: fixes
+- x86: converter: fixes
+- elf: some corner-case fixes
+- gui: support for pinned tabs
+- gui: other tweaks
+
+
+>>> JEB 4.28.1 (March 8, 2023)
+
+Fix some regressions introduced in version 4.28.
+
+
+>>> JEB 4.28 (March 7, 2023)
+
+- dexdec: protected code unvirtualizer: important upgrades
+- dexdec: upgraded IR optimizers, added new IR deobfuscators 
+- dexdec: multiple api additions (refer to javadoc)
+- dex: additions to the api context-information database
+- arm: analyzer updates
+
+
+>>> JEB 4.27 (February 13, 2023)
+
+- arm: multiple updates
+- elf: loader: do not fail on invalid DYNAMIC program table entries
+- dart: preliminary support for dart/flutter aot snapshots 2.19/2.19.1
+- dex: added user-specified InlineMode flags for internal methods (re: IDexMethodData api)
+- dexdec: generic method inliner (triggered by allowing inlining via dex methods' InlineMode flag)
+- dexdec: optimizer upgrades (in particular, important upgrades for the emulator-backed generic decryptor) 
+- dexdec: some fixes
+- dexdec: 'unvirtualizer' optimizer: updates (preparing for a larger upgrade planned for JEB 4.28)
+- dexdec: emu. config template: ext_policy_restrict_env default to true
+- dexdec: api additions
+- gui: dex method editor: support for specifying InlineMode 
+
+
+>>> JEB 4.26 (January 21, 2023)
+
+- dexdec: some tweaks and fixes following the 4.25 update
+- dexdec: ir: more optimizations
+- dexdec: constant factory: support for 'origin' on all constants
+- dexdec: api: important update: IDVar: unified 32-bit getId() used during DFA
+- dexdec: api: other additions, to DUtil in particular
+- dex: renaming and conflict detection: a fix
+- arm: updates
+- xml: fall-back parser: support case mismatch for tag elements
+- client: render all optimizer-generated constants (not just String) with special coloring
+- client: save recently opened files and recently executed scripts early
+- scripting: want to write ir/ast plugins for dexdec? head to https://www.github.com/pnfsoftware/jeb-samplecode/tree/master/plugins/scripts for sample code! 
+
+
+>>> JEB 4.25 (January 17, 2023)
+
+- dexdex: ir: important upgrades to the control-flow unflattener
+- dexdex: ir: added new optimizers, upgraded others
+- dexdex: ir: master optimizer: report bad custom plugins (that keep performing)
+- dexdex: ast: upgraded some optimizers
+- dexdec: api: several additions to IDState, IDEmuContext, IDEmuFrame, DUtil, IDMethodContext, IDMasterOptimizer, etc.
+- dex: string: provide a hint for unused strings (see: IDexString.getUsedInDex)
+- dex: CI+SEF database: update/fix: removed unsafe potentially methods
+- dex: allow enforcing name checks when renaming identifiers
+- dex: api additions
+- arm: updates, parsing upgrades
+- gui: cross-references sticky fragment (bottom of workspace, next to global quick-search)
+- gui: android: rename all parameters: widget update
+- gui: added option to auto-decompile during navigation (experimental/unstable feature, disabled by default)
+- gui: renaming action: warn and retry if renaming conflicts are reported
+- gui: strings fragment: report unused strings (specific to dex for now)
+- launcher: better error reporting (dumped to launcher_errors.log in JEB's folder)
+- floating clients: fix: provide reason for failure if no more seats
+
+
+>>> JEB 4.24 (December 17, 2022)
+
+Maintenance release.
+
+- dexdec: fixed a regression introduced in version 4.23 when opening some JDB2
+- dexdec: more optimizations (ir, ast)
+- arm: code analysis updates
+
+
+>>> JEB 4.23 (December 12, 2022)
+
+Maintenance release.
+
+- dexdec: ast: support for AST optimizer plugins, augmented AST API (sample code: JOptSampleJava.java, JOptSamplePython.py)
+- dexdec: ast: API updates
+- dex: global property to set default base for integer rendering 
+- native: code analysis: updates
+- arm: updates
+- gui: minimal support for presentation layer persistence in jdb2
+
+
+>>> JEB 4.22 (November 29, 2022)
+
+Maintenance release.
+
+- dexdec: emulator and sandboxing: multiple improvements yielding better deobfuscation
+- dexdec: improved inlined string encryption detection and processing
+- dexdec: added setting DeferredRequestsCap, to allow setting an explicit max count for deferred decompilations
+- dexdec: added setting AggressiveCodeCleanup, to further customize the behavior of some unsafe deobfuscators
+- dexdec: other fixes, tweaks
+- core: engines plugins: support script plugins (see sample code EngSampleJava.java, EngSamplePython.py) 
+- core: script plugin manager: fix: properly re-process bad plugins after they're fixed
+- arm: updates and fixes
+- elf: updates and fixes
+- dex: callgraph: performance improvements in large dex units
+- dex: api: method object: added methods {get,set}ParameterName() for convenience
+- dex: api: class object: added getAnnotationDefaults() for convenience
+- dex: api: utility: added more helper methods in DexUtil
+- jls: type info provider: support for type annotations, implemented for the dex type provider
+- gui: client scripts: support for auto-run (various types, see sample code AutorunTest?.py)
+- gui: quick search in documents: start from the current caret position, if there is one
+- gui: dex: added method editor for bulk parameter renaming (see the Android menu, or Shift+N)
+- gui: installer: fix: always set start-up scripts as executable
+
+
+>>> JEB 4.21 (November 3, 2022)
+
+Maintenance release.
+
+- elf: dwarf: parser for v2 to v5
+- elf: proper rendering for some elf64 sections
+- native: code analysis: better detection of small strings and other improvements
+- dart: aot snapshots: added support for dart 2.18; some fixes in results rendering
+- dex: do not hard fail on bad debug item offsets
+- apk: retrieve and provide Android app kind in disassembly header
+- arsc: config-changes gathering: boundary checks
+- zip: fallback parser: support recovery mode for truncated files
+- xml: fallback parser: updates
+- html: updates
+- base64: added unit parser
+- jdb2: quick-save: save and restore (and attempt restore) bookmarks
+- gui: filter strings in tables: clarified and updated syntax, refer to Manual
+- gui: ui api: additions (see sample scripts)
+- gui: reparse-at dialog: added filter
+- gui: quick-search: important fix
+- gui: other fixes
+
+
+>>> JEB 4.20 (October 5, 2022)
+
+Maintenance release.
+
+- dexdec: faster data flow analysis, simplified API (ref: IDFA3)
+- dart: aot snapshots: dart unit, public api (ref: IDartAotUnit, sample code: PrintOutDartInfo.py)
+- dex: anti-anti-analysis: debug_info_item objects flooding: improved processing, discard useless items
+- arsc: anti-anti-analysis: do not add package resources with same ids, keep the first one seen
+- gui: quick-search: fix: do not dispose borrowed documents
+- gui: fix: content-assisted textbox: do not display a suggestion box unnecessarily
+- python script: jython: upgrade to 2.7.3
+
+
+>>> JEB 4.19.1 (September 16, 2022)
+
+Important bug fix.
+
+It is recommended all users apply the update, in particular users running JEB with Java 18 or above.
+
+
+>>> JEB 4.19 (August 25, 2022)
+
+Maintenance release.
+
+- dex: move-to action: abort if src=dst
+- dex: xref: fixed address generation for 'type' objects
+- dex/apk: some minor bug fixes for apk contributions
+- dexdec: enum processing: fix: discard only necessary instructions in the static initializer
+- dexdec: emulator: fixes
+- dexdec: internal changes to prepare for a larger upgrade in 4.20, incl. api additions
+- xml: custom fallback parser for files not fully adhering to the xml specs
+- dart/flutter: added missing support for some serialized objects present 2.15-2.17
+- dart: increased verbosity for errors when encountering missing deserialization support
+- arm: various upgrades
+- gui: quick search: upgrades and fixes
+- gui: omnibox: fixes
+- gui: debugger 'threads' widget: fix error related to RC on threads objects
+- gui: minigame of sokoban (have fun!)
+
+
+>>> JEB 4.18 (June 26, 2022)
+
+Added Quick-Search.
+
+- gui: interactive quick search (see https://www.pnfsoftware.com/jeb/manual/misc/#quick-search)
+- gui: omnibox: items can be searched by original name and effective names (renamed items) 
+- gui: added one-off 'Do not replace views' in "Decompile With Options" widget (CTRL+TAB)
+- gui: browser views: fix rendering for empty webp files
+- gui: 'auto-rename all' action: support user-requested interruption
+- dexdec: api: added hooks managers for the emulator (see coreplugins/samples/DOptEmuHooks...)
+- dexdec: api: added hooks managers for the sandbox (see coreplugins/samples/DOptEmuSanddboxHooks...)
+- dexdec: api: emulator api additions, refer to IDState in the reference documentation
+- dexdec: default name generators for vars is type-based (was: register-based)
+- dexdec: emulation: attempt early unreflection for some methods
+- dex: performance improvement when providing refresh data to clients for very large dex units
+- dex: fix: some plugin properties were not properly registered
+- apk: debugging: pull debuggability info from on-device apk (not from the apk loaded in the JEB project)
+- arsc: tweak: handle string pool inconsistencies
+- arsc: when possible, soft-fail on corruptions or unhandled mangling and provide partial xml (rather than nothing) 
+- evm: fix: some contracts with no or bad metadata were failing
+- elf: pre-processing: additions and fixes
+- arm: additions
+- typelibs: linux glibc: regenerated to support GCC's __mode__ attributes
+- gzip: fix: single-file archives with entry name starting with '.' was not processed properly
+- jdb2: project reloading: user-requested interruptions were disregarded
+- other maintenance items (tweaks, minor bug fixes, a file handle was leaking)
+
+
+>>> JEB 4.17 (June 7, 2022)
+
+Added Dart AOT Snapshot parser.
+
+- dart: AOT snapshots analyzer plugin (https://www.pnfsoftware.com/blog/dart-aot-snapshot-helper-plugin-to-better-analyze-flutter-based-apps)
+- arm: updates
+- jdb2: databases no longer contain absolute paths to artifact files
+- dex: string rendering: added mode to escape all characters
+- s7: some fixes
+- other maintenance items
+- license: EULA update (rev. 2022/05/18 - https://www.pnfsoftware.com/jeb/LICENSE.TXT)
+
+
+>>> JEB 4.16 (May 11, 2022)
+
+Added Simatic S7 PLC program analysis modules (https://www.pnfsoftware.com/blog/reversing-simatic-s7-plc-programs)
+
+- s7: block acquisition
+- s7: block disassembly, interface recovery, code analysis
+- s7: MC7 code decompilation to pseudo-C
+- s7: API for extensions in the com.pnfsoftware.jeb.core.units.code.simatic package
+- s7: reverse engineering guide, details and manual (blog)
+- gendec: other updates
+
+
+>>> JEB 4.15 (April 30, 2022)
+
+Maintenance release.
+
+- arm: multiple updates
+- gendec: updates
+- dex: support for MethodParameters annotations
+- bug fixes
+
+
+>>> JEB 4.14 (March 8, 2022)
+
+Generic decompiler and EVM updates.
+
+- gendec: additional optimizers, including several value range analysis-based IR optimizers
+- ethereum: EVM (Ethereum virtual machine) decompiler updates
+- arm: additions
+
+
+>>> JEB 4.13 (February 22, 2022)
+
+Maintenance release.
+
+
+>>> JEB 4.12 (February 16, 2022)
+
+Generic decompiler (gendec) upgrades.
+
+- gendec: deobfuscation score in decompiled code
+- gendec: many more optimizers geared toward deobfuscation and code cleaning
+- gendec: optimizer updates, performance upgrades, some fixes
+- arm: updates
+- android: native code debugging: support for app's secondary process debugging (set via the android:process attribute in Manifest)
+
+
+>>> JEB 4.11 (January 18, 2022)
+
+Decompiler upgrades, gendec and dexdec.
+
+Core:
+- native: gendec: added control-flow unflattener (enabled by default; to deactivate, disable the unsafe optimizers in the engines options)
+- native: gendec: more optimizations
+- native: code analyzer: upgrades
+- native: data flow analysis: performance improvements
+- native: cfg operations: performance improvements
+- arm: upgrades
+- dexdec: rendering: support invocation arguments split (one per line); split enabled by default for calls with 10+ arguments, customize in the rendering options
+- dexdec: do not generate unnecessary casts when unboxing
+- dexdec: better inline synthetic accessors that were modified or obfuscated
+- dexdec: string rendering: support for forced non-escaped rendering (generate unsafe chars)
+- dexdec: support for rebasing array values
+- dex: API additions (see IDexUnit)
+- arsc: further hardened android resource parsing
+- android: framework database of methods parameters, used during rendering when parameters are split on single lines
+- many fixes and tweaks, mostly to gendec
+
+UI Client:
+- replace action: dex constants selection: multiple improvements
+- omnibox: tweaks to prevent errors
+- script editor: some fixes
+- html: allow the user to interrupt rendering of html units in web browser widgets
+- evm: ethereum contract downloader widget: added support for polygon and bsc contracts
+- other fixes
+
+
+>>> JEB 4.10 (December 1, 2021)
+
+Important upgrades to the generic decompiler, important fixes to the dex decompiler.
+
+Core:
+- gendec: multiple upgrades and improvements (first batch of a series of upgrades planned over the next releases)
+- gendec: more optimizers to handle obfuscating-compiler-generated code, such as fake calls (actual jumps), fake jumps (actual calls), opaque predicates leading to overlapping code, etc.
+- native code analyzer: improvements
+- arm parsers: additions and improvements
+- typelibs: updated windows type libraries (targeting x86, arm)
+- dex: improvements: callgraph calculation, method invocation resolution, (potentially-)recursive method detection
+- apk: added fail-safe for certificate parsing and apk verification
+- dexdec: fix: stricter checks for inlining
+- dexdec: optimizers max runcount: auto-adjusted to permit complete optimization and clean-up of highly obfuscated code
+- dexdec: api: IDState: support for maximum invocation depth
+- dexdec: more bug fixes and tweaks
+- dex/oat: plugin update: OAT parsing support added for version up to 214
+- evm (ethereum): updated routine hash dictionary
+- other fixes
+
+UI Client:
+- prevent saving when some background analysis is on-going
+- improved word-wrapping
+- some fixes
+
+
+>>> JEB 4.9.1 (November 3, 2021)
+
+Maintenance release.
+
+
+>>> JEB 4.9 (November 1, 2021)
+
+Maintenance release.
+
+- gendec: native decompiler improvements and updates
+- dexdec: minor additions
+- some bug fixing
+
+
+>>> JEB 4.8.1 (October 19, 2021)
+
+Bug fix.
+
+Fixing a problem introduced in version 4.8.
+
+
+>>> JEB 4.8 (October 16, 2021)
+
+Maintenance release.
+
+Core:
+- dexdec: optimizers: multiple improvements and additions
+- dexdec: added support for collection-wide IR optimizers
+- dexdec: API additions, including IDOptimizer.performOnCollection(), getPriority()
+- jdwp/dalvik debugging: improvements and fixes
+- dex: some fixes
+- arm: additions, support for LDnR conversions
+- bookmark manager: fix: clean-up dangling refs that may be present in older jdb2
+- other tweaks
+
+UI Client:
+- support client-provided fallback artifact paths for light-jdb2 referring to stale paths
+- handle QuestionNotificationPath notifications
+- some fixes
+
+
+>>> JEB 4.7 (October 2, 2021)
+
+Maintenance release.
+
+Core:
+- dexdec: additional IR optimizers
+- dexdec: plugin managers: updates
+- dexdec: API additions (additional custom IR optimizer plugins in coreplugins/)
+- elf: upgrades
+- wasm: added support for WebAssembly 1.1 specs; support for Threads extensions
+- other api additions (xml helpers, etc.)
+
+UI Client:
+- debugger: variables fragment: support for no-refresh; support for show debug vars only
+- debugger: threads fragment: support for no-refresh
+- updater: fix headless update problem (jebi.jar.new exists, jebi.jar does not) 
+- some tweaks
+
+
+>>> JEB 4.6 (September 18, 2021)
+
+Maintenance release, dexdec IR emulation API. 
+
+Core:
+- gendec: more optimizers
+- gendec: improvements and fixes
+- dexdec: added IR emulator API (apidoc: see com.pnfsoftware.jeb.core.units.code.android.ir.IDState)
+- dexdec: improvements and fixes
+- core: tweaks and fixes related to external plugins management
+- some dependencies were upgraded for a better experience on Apple Silicon (aarch64) macOS
+- runtime: the current recommendation is to use a JDK 11+ (JEB remains functional with a JDK 8+) 
+
+UI Client:
+- text fragments: added left-side vertical viewport bar, representing per-line unit metadata
+- native: item editor: support for dynamic branches
+- native: stackframe and type editors are modeless
+- code hierarchy: added collapse/expand-some/all commands
+- theme manager: tweaks for GTK
+
+
+>>> JEB 4.5 (September 1, 2021)
+
+This release ships with RISC-V decompilers! (JEB Pro only)
+
+Core:
+- risc-v: decompiler for RV32I/RV64I binaries (initial release)
+- native code pipeline: interface additions (see API doc), performance improvements
+- elf: plugins service for custom section processors, symbol processors, relocation processors
+- arm: parser tweaks and fixes
+- dex: tweaks, bytecode parsing completion estimator
+- android: arsc parsers: tweaks to support more obfuscation schemes
+- dexdec: fixed corner-case problems in some IR optimizers
+- ethereum: evm: support for BASEFEE opcode
+- gendec: ir optimizers: some fixes
+- gendec: multiple updates re: composite parameter and return type handling
+- jdb2: validate records integrity (soft-fail/warning on failure)
+
+UI Client:
+- logger fragment: coloring and level selection
+- other improvements related to the pe/elf fragment, calling conv./register bank fragments, etc.
+
+
+>>> JEB 4.4 (August 4, 2021)
+
+Maintenance release.
+
+Core:
+- dexdec: dexdec IR API: added resetDeobfuscatorCounters() (see sample IR plugin script update, DGReplaceApiCalls.py)
+- dex: preemptively build the callgraph
+- arm plugins: upgrades
+- gendec: fixes
+- persistence: optimization: use less memory when saving/loading
+
+UI Client:
+- Low memory indicator in status bar
+- Print out all JVM java.lang.Error
+- Open File: support loading files located on Windows shared drives (\\SERVER\PATH)
+
+
+>>> JEB 4.3 (July 13, 2021)
+
+Maintenance release.
+
+- Tweaks and bug fixes in gendec, dexdec, dex, odex, arm modules
+- Floating controllers: protocol 1 (HTTPS) now use TLSv1.3 (reason: TLSv1 has been deprecated in recent JDKs); see https://www.pnfsoftware.com/jeb/manual/floating/ for details
+
+
+>>> JEB 4.2 (June 27, 2021)
+
+Core:
+- dexdec: support for external IR plugins/optimizers, written in Java or Python. See the coreplugins/ folder for details, blog for examples.
+- dexdec: decompiler Intermediate Representation (IR) API, in package com.pnfsoftware.jeb.core.units.code.android.ir. Refer to the API javadoc for details.
+- dex: context-information provider: fix
+
+UI Client:
+- Android Decompiler: dexdec plugins widget (see the Android menu, Decompiler Plugins handler)
+- Android Decompiler: possibility to decompile a single-method (see Action, Decompile with Options, untick "Decompile top level container class" to disable current address reinterpretation)
+
+
+>>> JEB 4.1 (June 22, 2021)
+
+JEB version 4 has been in the making for over a year and half! The Beta has been available for all users for the past 5 months. Thank you for the feedback that many of you provided, it helped iron things out. The list below is a non-exhaustive changelog of additions since JEB 3.28.2. Finally, on a related note: JEB 4.2 is around the corner already, with significant API additions that allow more control over the dex decompilation pipeline, in particular support for dexdec IR (Intermediate Representation) plugins. They unlock the possibility to write IR optimizers to thwart complex obfuscations. Stay tuned!
+
+A list of 3.28->4.1 changes:
+
+=> Core changes (high-level):
+- gendec: JEB's generic decompiler for all architectures but dex (i.e. x86, arm, mips, ethereum, wasm, etc.) received many important upgrades, and was one of the major focus for v4
+- dexdec: JEB's dex/dalvik decompiler received important additions, most notably an emulator coupled with a custom sandbox that allows the generic auto-decryption and deobfuscation of data and code
+- native code analysis: upgrades, incl. performance, more analysis options, better switch recognition, tail-calls detection, etc.
+- debuggers: updates and support for dynamic addition of native code units
+- siglibs (library code recognition): updates for Android NDK, MSVC
+- 'codeless' siglibs: see our blog; added codeless signatures for OpenSSL and libcurl
+- typelibs (type libraries): updates
+- x86: added MSVC exception parsing
+- decompiler API: many additions for scripts/plugins to perform finer-grained decompilations
+- dex: context-information database to specify context-sensitivity and side-effects for methods, to allow better optimizations
+- dex: support for method and class moving (to classes/methods), for ex. allowing the creation of anonymous classes (previously, only class-to-package moving was supported)
+- dex: better obfuscated enum reconstruction
+- dex API: additions
+- comment manager: support inline, header (i.e. pre, above) and meta comments
+- JDB2 databases: upgraded the serialization process, now reliable on very large projects (previously could trigger OOM errors if -Xss had a low value)
+- Miscellaneous performance improvements, fixes and tweaks
+
+Specific to gendec:
+- x86/x64: decompiler plugin upgrades (incl. support for x87, mmx, sse, and supplementary ISAs)
+- arm/aarch64: decompiler plugin upgrades (incl. more opcodes and additional ISAs)
+- mips/mips64: decompiler plugin upgrades (incl. more opcodes and additional ISAs)
+- evm (ethereum): decompiler plugin upgrades (incl. newest opcodes, precompiled contracts 5-8, more routine hashes, etc.)
+- wasm: decompiler plugin upgrades (incl. floating-point instructions, br_table, conversion instructions, etc.)
+- added more IR optimizers
+- Pseudo-class recognition and reconstruction
+- API additions
+- IR pattern matching and replacing; IR compiler; IR emulator
+
+Specific to dexdec:
+- deobfuscator: virtualization deobfuscation (limited; see blog)
+- deobfuscator: added Control-Flow flattening deobfuscation (limited)
+
+=> UI Client changes:
+- Omnibox for project-wide searches (F3)
+- Python script manager, script editor (F2)
+- Smart auto-completion, history-assisted text fields in most dialogs
+- Better Options/Configuration panels, for back-end and front-end properties
+- Support for Favorites/Bookmarks (F12)
+- Text line highlights (Ctrl/Command + M)
+- Code comments: support for inline comment, header comments, meta comments
+- Many more native code analysis widgets (see Native menu)
+- Android analysis: added easy dex merger widget; added customizable context-information database
+- Simpler Export facility (File, Export menu)
+- Explorer-like view for Folder units (with thumbnails)
+- Updated the Dark theme and Light theme
+- Progress indicator during save to/load from JDB2
+- API additions, incl. the Graphing API (see GraphDemo?.py sample scripts)
+- Better code replacement option (Action, Replace)
+- Debugger: register live code unit addition, during a debugging session
+- Table/tree filter: reverse matching with TILDA-prefixed filter string
+- Tip of the day (Help menu)
+- Floating builds: allow different controllers (different licenses) to run on the same machine
+- Non-floating builds: improved the update process, allow different licenses to run on the same machine smoothly
+- Miscellaneous performance improvements, fixes and tweaks
+- The client can now run on arm64 platforms (macOS and Linux/GTK)
+- Java version: minimum Java 8; recommended Java 11+
+
+
+>>> JEB 4.0.10 Beta (June 8, 2021)
+
+Public beta #10.
+
+
+>>> JEB 4.0.9 Beta (May 23, 2021)
+
+Public beta #9.
+
+
+>>> JEB 4.0.8 Beta (April 30, 2021)
+
+Public beta #8.
+
+
+>>> JEB 4.0.7 Beta (April 20, 2021)
+
+Public beta #7.
+
+
+>>> JEB 4.0.6 Beta (April 19, 2021)
+
+Public beta #6.
+
+
+>>> JEB 4.0.5 Beta (April 6, 2021)
+
+Public beta #5.
+
+
+>>> JEB 4.0.4 Beta (March 24, 2021)
+
+Public beta #4.
+
+
+>>> JEB 4.0.3 Beta (March 8, 2021)
+
+Public beta #3.
+
+
+>>> JEB 4.0.2 Beta (February 22, 2021)
+
+Public beta #2.
+
+
+>>> JEB 4.0.1 Beta (February 10, 2021)
+
+First public beta.
+
+
+>>> JEB 3.28.2 (February 8, 2021)
+
+Maintenance release.
+- gui: faster filtering on tables
+- dexdec: emulator fix regarding method resolution for obfuscated corner cases
+- dex: more packages in default do-not-expand list
+- dex: support dex format version 40; SimpleName verification per latest specs
+- dex: package renaming validate names
+- installer update
+
+
+>>> JEB 3.28 (December 24, 2020)
+
+Maintenance release.
+- dexdec: generic string decryption: improvements for inlined encryptions
+- dex/dexdec: constant rebasing: support for rendering as char
+- dex: added convenient 'Merge additional dex file' menu entry
+- python scripting: fix: added support for java >11 (i.e. the former JDK 8-11 recommendation is lifted)
+- ui library update
+- other minor fixes
+
+
+>>> JEB 3.27 (November 24, 2020)
+
+Maintenance release.
+- auto-rename all: support for filters
+- dex: fix: item renaming check
+- gui: fix: always provide the last activated unit part
+
+
+>>> JEB 3.26 (November 9, 2020)
+
+Maintenance release.
+- debugger helper, decompiler helper: improvements
+- android: adb helper: added to public api
+- ui library update/tweaks due to problems with gtk
+
+
+>>> JEB 3.25 (October 6, 2020)
+
+Maintenance release.
+- android: bundling platform files api level 30
+- dex: access flags rendering update
+- dex: add edgetFileIndex() to api
+- dalvik: parser fix: switch data boundary check
+- dexdec: disabled emulation for bridge methods
+- dexdec: more strings simplification optimizers
+- dexdec: emulation policy: support restrictions on fields
+- dexdec: annotations fix: render annotations on abstract types as well
+- strings view: tweaks
+- support for java 11
+- update facility: updates
+- ui library update
+
+
+>>> JEB 3.24 (July 28, 2020)
+
+Maintenance release.
+- dex: warn if field/method type info mismatch the containing classdata info
+- dex: fixes re:concurrent access
+- dexdex: try-block conversion: flexible conversion for messed-up boundaries
+- dexdec: tweaks/fixes
+- dexdec: unvirtualizer updates
+- jeb floating controllers: fix
+
+
+>>> JEB 3.23 (July 13, 2020)
+
+Maintenance release.
+- dexdec: multiple upgrades to the unvirtualizer
+- other fixes and tweaks
+
+
+>>> JEB 3.22 (July 9, 2020)
+
+Maintenance release.
+- dexdec: "Un-Virtualizer" (ref: blog)
+- dexdec: emulation: upgrades
+- dexdec: optimizers: upgrades
+- other tweaks and fixes.
+
+
+>>> JEB 3.21 (June 27, 2020)
+
+Core:
+- dexdec: optimizers: multiple updates and additions
+- dexdec: emulation: updates and fixes
+- dexdec: typing, casting: upgrades, better clean-up
+- dexdec: decompilation events: added MESSAGE type (API: DexDecompilerEvent)
+- dexdec: detect classes and methods protected by virtualization (ref: blog)
+- dexdec: multiple bug fixes
+- dex: support the merger of dex files into an existing dex unit (API: IDexFile.addDex)
+- dex: type renaming: prevent conflicts
+- dex: do not fail multi-dex apk parsing if a dex entry looks bad
+- global property: added FlattenStringsInCodeDocuments: enable to ensure clean unicode rendering on all systems
+- UI API additions: displayFileOpenSelector, displayFileSaveSelector, displayFolderSelector
+
+Client: 
+- UI framework update (SWT R-4.16-202006040540): problem with multiple displays on macOS should be fixed
+- fixes and tweaks
+
+
+>>> JEB 3.20 (June 9, 2020)
+ 
+Lots of additions in this release, the list below is far from exhaustive.
+We will publish a blog this week to showcase a couple of features introduced in version 3.20. 
+
+Core:
+- dexdec: more optimizers and deobfuscators
+- dexdec: emulator: multiple upgrades
+- dexdec: emulator: decrypted data and unreflected code is visible in multiple areas
+  (including decompilation events and auto-generated comments in assembly), and properly
+  integrated into the code base, e.g. with cross-references
+- dexdec: user-registered events queues, global event queue (API, see IDexDecompilerUnit)
+- dexdec: user-configurable side-effect-free/context-insensitive code
+- decompiled output: multi-line comments, better formatting
+- jdb2: added project properties to quick-save persistence mode.
+- analysis: finer data flow analysis over irregular control flows
+- dex: package signature change, e.g.: Lcom/some/name/ to denote com.some.name
+- many fixes and tweaks
+
+Client:
+- 'Android' menu: global analysis, emulator settings, other advanced dexdec controls
+  (start a global analysis to let the decompiler analyze the entire code base and
+  determine encrypted data and obfuscated code)
+- dex decompiler node: events table fragment under dexdec node
+- code hierarchy: visual filters (packages, classes, etc.)
+- locate in code: give focus to the code hierarchy part
+- fixes
+
+
+>>> JEB 3.19.1 (May 7, 2020)
+
+Fixes and tweaks.
+
+
+>>> JEB 3.19 (May 6, 2020)
+
+Maintenance release.
+
+Core:
+- DEX Decompiler: Emulator: improvements
+- DEX Decompiler: fixes on corner-case scenarios
+- Java: Decompiled source: matched parentheses/brackets/braces open-close
+- Dex/Dalvik: more information for query xrefs action
+- Dex/Dalvik: some fixes, more tolerant Dalvik parsing in corner-cases
+- Operation: added COPY_ADDRESS (see API; mapped to menu "Navigation, Copy Address" in UI client)
+- Native: Siglibs updates
+- Other fixes
+
+Client:
+- Cross-references panel: the dialog is now modeless (keep navigating, jump to xrefs without closing the widget) 
+- Navigation: fixes and tweaks in history navigation (more to be smoothed out, navigating the history remains counter-intuitive in some cases)
+- Styles/Themes: added light/sepia fall-back for system-wide dark modes if needed
+- Themes: fixed standard theme on dark-mode macOS with recent JDK
+- UI client is now compatible with recent JDK, incl. JDK 14. JEB's native launcher will not work on linux/macOS though.
+  Note: we recommend to keep on using JDK 8u191+.
+- Other fixes
+
+
+>>> JEB 3.18.1 (April 30, 2020)
+
+Fixes and tweaks.
+
+
+>>> JEB 3.18 (April 29, 2020)
+
+Core:
+- DEX Decompiler: emulator improvements, fixes, and adjustments (incl. more options in coreplugins/dexdec-emu.cfg )
+- DEX Decompiler: more aggressive optimizations (can be disabled in the options) 
+- DEX Decompiler: support for const-method-handle and const-method-type (will generate artificial methods - refer to Manual)
+- DEX Decompiler: full support for invoke-custom whose linker methods is of type INVOKE_STATIC (will generate artificial methods - refer to Manual)
+- DEX Decompiler: API: support for decompilation events registration (see sample script)
+- Native code analysis: upgrades, MSVC tail call detection
+- JDWP debuggers: minor updates for performance
+- Cross references: support for reference types (e.g., get, set, call, etc.)
+
+Client:
+- Refreshed JEB manual, more contents (online at pnfsoftware.com/jeb/manual or in your doc/manual folder)
+- Faster filtering in table and tree views
+- Navigation history panel
+
+
+>>> JEB 3.17.2 (April 13, 2020)
+
+Fixes and tweaks.
+
+
+>>> JEB 3.17.1 (April 12, 2020)
+
+Fixes and tweaks.
+
+
+>>> JEB 3.17 (April 9, 2020)
+
+Core:
+- DEX Decompiler: full support for concurrent decompilation
+- DEX Decompiler: multiple performance improvements
+- DEX Decompiler: generic string decryptor: additions and tweaks; granular options (see bin/dexdec-emu.cfg)
+- DEX Decompiler: exporter utility (see DexDecompilerExporter class in com.pnfsoftware.jeb.core.units.code.android)
+- DEX Decompiler: multiple fixes
+- Decompiler API: additions (see sample scripts)
+- Native code analysis: updates
+- MSVC x86 switch recovery improvements
+- UI API: added displayText()
+- DEX: incomplete events: provide previous name for Rename operations
+- APK/arsc: resource extraction: keep file extensions
+
+Client:
+- Export: fast dex decompile (in File, Export)
+- Debuggers: improvements
+- Faster tables
+- Better navigation for decompiler
+- Perform auto re-decompilation with Decompiling with Options (CTRL+TAB, or COMMAND+TAB)
+
+
+>>> JEB 3.16 (March 25, 2020)
+
+This release is still guaranteed COVID19-free.
+
+Core:
+- DEX Decompiler: Generic String Decryptor: Multiple improvements and fixes
+- DEX Decompiler: Special rendering for unreflected items
+- DEX Decompiler: Multiple fixes, mostly anti-obfuscation tricks
+- JEB's "Make APK Debuggable" tool (flag --makeapkdebug): fix - special thanks to Aaron W.
+- Dalvik rendering: additions
+- Dalvik: try blocks: additional sanitization
+- PE parser: additions
+- Native code analysis: updates
+- More fixes and additions in Core and UI Client
+
+
+>>> JEB 3.15 (March 9, 2020)
+
+This release is guaranteed COVID19-free, not bug-free.
+
+Core:
+- DEX Decompiler: Generic String Decryptor: Multiple improvements, leading to support of complicated encryption patterns. Overall, you should see many more auto-decrypted strings in decompiled code (this feature can be disabled in the Options, refer to EnableDeobfuscators and EmulationSupport)
+- DEX Decompiler: Optimization (IR and AST) updates, incl. better rendering for compiler-optimized complex try-catch-finally constructs (still plenty of room for improvement, in particular for try-with-resource constructs)
+- DEX Decompiler: Better information on auto-generated Strings
+- DEX Decompiler: Decompilation: Provide finer-grained progress information to clients
+- DEX Decompiler: Java AST API: safer replaceSubElement(), it could previously lead to unnecessary ClassCastException
+- DEX Decompiler: Bug fix: pickup updated strings in DEX when rendering decompiled Java
+- Android/Dalvik debuggers: updates and stability improvements
+- DEX: option to provide extra information (eg, method size) in code node labels
+- DEX conversion for Classfile decompilation: failsafe mode, use dx then d8 (or the reverse), if one failed
+- Json parser updates
+
+UI Client:
+- Python/Jython: improvements to Terminal-bound script interpreter (how to use? 'use py'): full IGraphicalClientContext, auto-completion on custom *.py imports, etc.
+- Code Hierarchy: option to provide additional information for non-native code hierarchies (similar to what is provided for native code hierarchies)
+- Decompilation: finer-grained progress information
+- Debugger views: improvements
+- Font: Fix: Font update was not picked up in some cases
+- Other fixes in rendering 
+
+
+>>> JEB 3.14 (February 25, 2020)
+
+- DEX Decompiler: generic deobfuscator upgrades
+- DEX Decompiler: optimizer additions
+- Java API: create external method and field references (see sample script JavaASTCreateMethodRef.py)
+- APK: Arsc: handle illegally encoded UTF-8 string resources
+- DEX: updates and fixes
+- Native code analyzer: updates
+- UI Client: code hierarchy tree move-to-same bugfix
+- UI Client: minor additions
+
+
+>>> JEB 3.13 (February 18, 2020)
+
+- DEX Decompiler: generic decryptor: additions, fixes, more logs, special rendering on client side
+- DEX Decompiler: more mid-level and high-level optimizations
+- DEX: various fixes/tweaks
+- Added generic optional action "Auto-Rename All", to be used discretionarily on obfuscated code (menu Action)
+- Support for svg rendering
+- Debugger fixes
+- Key shortcut trigger fixes
+- Support for d8/dx selection when decompiling Java bytecode
+- Other fixes (e.g. Styles) 
+
+
+>>> JEB 3.12.1 (February 10, 2020)
+
+Important additions to the Dalvik/DEX decompiler; Added support for Java bytecode decompilation.
+
+DEX Decompiler:
+- Generic deobfuscator: attempt to perform string decryption and replace method calls by strings (see blog post)
+- Optimizer: unreflect dynamic code (replace invocations-via-reflection code by static code, and clean-up)
+- Optimizer: improved array inlining
+- Other optimizers: additions and upgrades across the board
+- Lambda reconstructor: a bug fix
+
+Other Additions:
+- Support for Java bytecode decompilation: single classfile, jar archives.
+  (Java bytecode is converted to DEX and processed by DEX decompiler.) 
+- Upgrades related to DEX handling and rendering in the UI client.
+
+
+>>> JEB 3.11.1 (January 30, 2020)
+
+This update fixes a regression found in 3.11.0.
+
+Other minor updates.
+
+
+>>> JEB 3.11 (January 24, 2020)
+
+DEX Decompiler upgrades.
+
+- Custom deobfuscators for some Samsung obfuscation schemes (pseudo switches, local array based arithmetic and opaque predicates, etc.)
+- Improved optimizations related to synchronized blocks and methods (safe, poorly or partially synchronized methods are also detected)
+- Additional switch-on-string reconstruction
+- Improved optimizations generally
+- Additional control-flow deobfuscators and cleaners
+- Better optimization for String building
+- Insert extra returns more aggressively
+- Variable propagation fixes re:protected blocks
+- Fix regarding outer-class obfuscated names
+- Support for decompiled class deletion and redecompilation
+- Other fixes
+
+
+>>> JEB 3.10.1 (January 12, 2020)
+
+This update fixes regressions or problems found in 3.10.0.
+
+
+>>> JEB 3.10.0 (January 10, 2020)
+
+- DEX decompiler: discover and reconstruct desugared lambdas and method handles (dex<=37)
+- DEX decompiler: invoke-custom support and lambdas generation (dex>=38)
+- DEX decompiler: performance improvements
+- DEX decompiler: non-breaking API changes to IElement.getTagMap() 
+- Java Source API: additions
+- APK arsc: restructuring: support for renaming resources (previously was: moving only)
+- DEX: fix in MethodHandle type enumeration
+- RTTI: parser updates
+
+
+>>> JEB 3.9.0 (December 31, 2019)
+
+- DEX decompiler: render pseudo-anonymous classes (deanonymized and used as such exclusively) at the bottom of the original container (anti-obfuscation)
+- DEX decompiler: synthetic field/method rendering: those items are not shown only if determined to be truly synthetic
+- DEX decompiler: API addition to retrieve the IJavaIdentifierManager used by an method (sample script: JavaListIdentifiers.py)
+- DEX: API addition: retrieve all renamed identifiers (sample script: JavaListIdentifiers.py)
+- Unit events: provide extra details for UnitChange events (sample script: ListenToDexChangeEvents.py)
+- UI Client: Fixed text view scrolling issues on latest versions of macOS
+
+
+>>> JEB 3.8.0 (December 24, 2019)
+
+- C++ class hierarchy built from RTTI (including vftable definition in memory); currently handle x86/x64 Visual Studio and Itanium RTTI
+- ELF relocations: additions
+- Native code analyzer: minor fixes
+- Android arsc parsing: fix (plurals confusion)
+- Bookmarking (Favorites) scripts: https://github.com/pnfsoftware/jeb2-samplecode/tree/master/scripts (BookmarkSet, BookmarkList)
+- Added reverse search in interactive text views
+- Support for custom URI handler 'jeb:' -- refer to the URI handler registering script in bin/uri/GenRegisterJebUriScheme.py for details  
+- Support for software update channels: Release (default), Beta, Alpha)
+
+
+>>> JEB 3.7.0 (September 27, 2019)
+
+- ELF: many improvements, added relocations for x86/x64 REL and non-PIC files
+- PE: parsing for COFF symbol table (used in Golang executables)
+- Unmanglers: updates, implemented MSVC++ string constants
+- Siglibs: added ARM/ARM64 Android NDK r20, x86/x64 VS2019 signatures
+- Strings and formatting: support for RTL text embedding.
+- Native code analyzer: minor fixes
+- Android: framework for Android 10 release (API level 29)
+
+
+>>> JEB 3.6.2 (July 26, 2019)
+
+- Dex: fix: exclude constructors and privates when calculating override graphs
+- Dex: fix: prevent renaming attempts on reserved methods
+- JDWP, Dalvik debugging: fix: thread frame object storage potential collision
+- ELF: processor type conversion for avr and avr32
+- MSVC x86 exceptions: continued
+- Java AST: rendering: methodId generated on 'new' keyword, typeId generated on the constructor identifier
+
+
+>>> JEB 3.6.1 (July 17, 2019)
+
+This update fixes regressions or problems found in 3.6.
+
+Core:
+- Cross-references: fix: when reloading from older JDB2 projects
+- Dex decompiler: Fix: variable-id generation collision for re-used vars
+- Debugger API: specialized public interfaces INativeDebuggerUnit, IDalvikDebuggerUnit
+- Dalvik dbg: support for frame variable index type setting/getting, both via API and via Terminal command (frameSlotIndexMode)
+- Atmel avr: additions
+- Intel ihex: additions
+
+UI Client:
+- Loading: Properties setter when opening files: easier navigation
+- Loading: Warning when parent folder of a loaded file has trailing white-space characters
+
+
+>>> JEB 3.6.0 (July 10, 2019)
+
+Core:
+- Libra (libravm/move) analysis modules and decompiler. The plugins have been open-sourced here: https://github.com/pnfsoftware/jeb-plugin-libra
+- Support for Extensible Firmware interface (UEFI) module analysis: part 1, incl. typelibs and decompiler extension - full support in next release 
+- Decompiler: updates, incl. decompiler extension as first-class plugins (see INativeDecompilerExtension on API doc)
+- Decompiler: full support for multi-return dispatch in IECall, IEReturn, IEUntranslatedInstruction; API additions (samples to be published on GitHub)
+- MSVC unmangling: added RTTI
+- Siglibs: added VS2003 sigs, updated VS2005 sigs
+- Typelibs: updates
+- Dex: record string xrefs from static field initializers
+- Dex: API additions to conveniently (more easily) retrieve cross-references.
+- Dex: prevent renaming types to illegal Java identifier names
+- APK: bundling framework files API29 final (Q.beta4)
+- Java API: additions to easily rename method parameters and variables
+- ihex (Intel Hex): additions
+
+UI Client:
+- Interactive scripting (Python 2.7 syntax): select the Terminal fragment, input 'use py'
+- Parsing properties displayed for all input artifacts
+- Property: UiPreferRealAddressesInDialogs
+- Bundles androsig version 1.1.3 (https://github.com/pnfsoftware/jeb2-androsig)
+
+
+>>> JEB 3.5.0 (May 31, 2019)
+
+Core:
+- Support for MSVC x86 C++ exceptions
+- DEX: indirect xrefs gathering for fields and methods
+- Xref action: support for user-friendly addresses (API)
+- Android: metaresources.arsc decoder (blog: https://www.pnfsoftware.com/blog/android-metaresources-arsc/)
+- Androsig update 1.1.2 (blog: https://www.pnfsoftware.com/blog/new-version-of-androsig/)
+- Native Decompiler: fixes 
+
+Dalvik Decompiler:
+- Generate informational @Override annotations with super-impl./defs
+- Optimizer: Prevent overly aggressive substitutions that would generate out-of-order nested invocations
+- Navigation and addressing of decompiled sources: improvements
+- High-level try-block merging: improvements
+- Enum optimizer: trigger enum-map recon for all classes, not just inners
+- Cast reduction: improvements
+- Cross-references: provide user-friendly addresses
+- Rendering: better field and static method navigation (support indirect references)
+- Fix: anti-decompilation tricks used in protectors
+- Fix: Rendering: Constructor call references the actual constructor method instead of the object type.
+- Fix: Provide effective AST unit name
+- Java source contributions: provide item signatures on mouse hovers 
+
+UI Client:
+- Support for friendly-addressing in xref dialogs
+- Minor fixes
+
+
+>>> JEB 3.4.0 (May 20, 2019)
+
+Maintenance release with native decompiler and dalvik decompiler updates, performance improvements, and release of Androsig 1.1.
+
+Core:
+- Native: decompiler upgrades (part 1, more coming in 3.5+)
+- Native: support for MVSC SEH version 3
+- DEX: default parsing mode set to MODE_ART=50 (see Dalvik property 'DalvikParserMode')
+- Fixes in debugger, document management, native code analyzer
+- API addition: IAddressableUnit.getRelatedItems(), IActionableItem.HAS_RELATED_ITEMS
+- API addition: IClientContext.getTransientStore()
+
+Dalvik Decompiler:
+- Detection and support for constructor inlining call optimization
+- Java Rendering: Support for virtual method dispatching candidate selection 
+- Fixes
+
+UI Client:
+- Decompiled Fragment: Support for virtual method dispatching candidate selection during navigation
+- Fix: important performance improvement when processing large files
+- Fix: main menu shortcut rendering on some GTK platforms
+
+
+>>> JEB 3.3.1 (May 6, 2019)
+
+Minor update with fixes.
+
+
+>>> JEB 3.3 (May 4, 2019)
+
+Dalvik decompiler additions, SiglibGen release, Android debugger updates.
+
+Dalvik Decompiler:
+- IR optimization: Full graph expression propagation - this powerful optimization can be costly and is limited to medium-sized methods (that can be changed in the options)
+- Support for Jar type libraries for object casting reduction. Drop additional Jar files to ~/.jeb-android-libraries. JEB ships and auto-drops the Android Frameworks libraries (android.* java.* et al.)
+- Bug fixes
+
+Core:
+- SiglibGen is public! Generate your own code signature libraries (siglibs/*.siglib) to auto-identifiy and rename routines - blog: https://www.pnfsoftware.com/blog/siglibgen-native-signatures-generation-for-jeb/
+- Android Debuggers: update to support JDWP debugging with API 28+ (Android 9 and above) - blog: https://www.pnfsoftware.com/blog/debugging-android-apps-on-android-pie-and-above/
+- Updated Android NDK siglibs
+
+
+>>> JEB 3.2 (April 26, 2019)
+
+This release focuses on the Dalvik decompiler. Expect another batch of updates in May!
+
+Core:
+- DEX/Dalvik decompiler updates (more details on https://www.pnfsoftware.com/blog)
+- Native code analysis improvements
+- DEX: rendering updates and fixes
+- Java API: additions related to new decompiler features
+
+UI Client:
+- "Decompile with Options" for convenience (shortcut: CTRL+TAB or COMMAND+TAB)
+- Some fixes on the UI 
+
+
+>>> JEB v3.1.4 (April 5, 2019)
+
+Maintenance release.
+
+Core:
+- Native decompiler updates (some beta options are still disabled by default, refer to the manual)
+- Native code analysis updates
+- Native code disassembly rendering updates
+- Android: support for APK regeneration to debuggable mode (use '-c --makeapkdebug' and remember to sign the generated APK)
+- Android: shipping with API 29 Beta 2 framework resources
+- A bunch more API additions, we will update and add sample scripts on github.com/pnfsoftware/jeb2-samplecode
+- Fixes
+
+UI Client:
+- Mostly fixes and tweaks in this release, no major additions
+- Note: on macOS, the native launcher is disabled by default, since it may interference with third-party
+  process execution (verified on some recent versions of macOS) - refer to jeb_macos.sh for details
+
+
+>>> JEB v3.1.3 (March 18, 2019)
+
+Maintenance release with lots of upgrades in Native and Android components as well as public-facing API. 
+
+Core:
+- Dalvik Decompiler: many updates, including optimizations e.g. synchronized blocks, try-catch/multi-catch-finally, switch-on-strings, etc.
+  Some of the decompiler are beta and/or aggressive heuristics (see blog) - part 2 to come in next JEB update, 3.1.4
+- APK/DEX: resource id resolver and hints generator in source
+- DEX rendering: various updates
+- ARSC Decoder: corner-case fix
+- JDWP: updates and tweaks, do not enumerate explicit end-points for speed
+- Android: API 29 (Q beta 1) framework resources
+- Native code analysis: various improvements
+- C: simple AST tree simulator (also see blog Part 1 on the MarsAnalytica challenge solution)
+- C: additional built-in AST optimizations
+- x86: endbr instructions
+- API and Client API: additions (see blog)
+- Many more small fixes and additions
+
+UI Client:
+- Debugger: locals: keep tree state when visualizing locals, this, and their children
+- Debugger: performance improvement on stepping operations 
+- Debugger: variables: show alternate names
+- Script: better script manager that supports for hot keybinding, tweaked logging and error reporting
+- Better support for duplicate units and generic (unidentified) units
+- Client API: additions, see com.pnfsoftware.jeb.client.* and sample script on GitHub repo.
+- Fixes several memory leaks on project-close actions
+- Workaround: Ubuntu16 with Unity, recent releases: grayed out (disabled) main menu handlers
+- Other updates and fixes
+
+
+>>> JEB v3.1.2 (February 7, 2019)
+
+Maintenance release.
+
+Core:
+- Siglibs: updates, including Latest MSVC'17 code signatures
+- AST: more optimizations
+- Debug symbols: support for Microsoft PDB retrieval and application
+- Code analysis: parsing improvements
+- Unmangler: API: unmangling engines are accessible
+- Native disassembly: more rendering options
+- Quick-save: fix when reloading QuickState objects for non-processed units
+- API additions
+- More fixes and updates.
+
+UI Client:
+- Performance Improvements
+- Native: quick navigation to entry-point and main()
+- CFG: rendering updates
+- Native type editing: updates
+- Toolbars: fixes
+- Shell and children shells: size fixes
+
+
+>>> JEB v3.1.1 (January 23, 2019)
+
+Maintenance release.
+
+Core:
+- Debugger plugins: some upgrades
+- Arm64: debug: registers id fixes
+- Siglibs: added Android NDK r19
+- Siglibs: added MSVC VS2017 packages
+- EVM decompiler: fix in contract rebuilder
+- Decompiler: additional AST optimizations
+- PE plugin: reproducible build id info
+- Command-line instances: support for rotating logs
+- API additions
+- Additional fixes
+
+UI Client:
+- Smoother searches
+- Debugger panel glitches
+- GTK-related fixes
+- General UI glitches
+
+Blog:
+- Writing custom IR optimizers for the native decompiler pipeline & clean-up custom obfuscation: https://www.pnfsoftware.com/blog/jeb-native-pipeline-ir-optimizers-part-2/
+
+
+>>> JEB v3.1.0 (January 15, 2019)
+
+JEB3, the latest major update, is now available to all users. Below is a high-level summary of the changes.
+
+- New desktop client, lighter and faster. The JEB3 client also ships with a dark/solarized theme, and supports custom keyboard shortcuts.
+- Major upgrades to the native analysis pipeline. The decompilation pipeline is accessible and customizable at different stages, which we will detail in coming blogs. We published part 1 of a series on writing custom IR optimizers and AST optimizers.
+- New decompilers for Ethereum smart contracts (evm) and WebAssembly modules (wasm). As of JEB 3.1, JEB ships with 8 decompilers: dex/dalvik, x86, x86-64, arm, arm64 (aarch64), mips, wasm, and evm. A large chunk of our effort this year will be focused on continuing our work on the native analysis and decompilation (eg, advanced optimization modules, release of the C++ reconstruction plugin, open-sourcing of advanced optimizers, etc.).
+- Type libraries for Windows, Linux, and Android-Linux sub-systems for common architectures (x86, x86-64, arm, aarch64). Power users can also generate their own typelibs (eg, for cusotm SDKs), as we presented on our blog.
+- Signature libraries for common library code on Windows (all versions of Visual Studio static libs) and Linux-Android (common NDK libs from NDK v11 onward).
+- Windows malware analysis and Android SO native files is enjoyable and practical with JEB. Combined with powerful, custom IR optimizers, the analysis of complex code is also possible.
+- Interactive global graphs. The desktop client provides this experimental feature, whose goal is to provide global, smart views of a program. More to come, including API to access the CFG graphs, callgraphs, and create cusotm graphs.
+
+
+>>> JEB v3.0-beta.X (July - December 2018)
+
+Major update. Full release scheduled for January 2019.
+
+An overview of JEB3 Beta can be found at https://www.pnfsoftware.com/blog/jeb3-alpha-is-available/
+
+
+>>> JEB v2.3.14 (June 1, 2018)
+
+This maintenance release is expected to be the last 2.3 branch update.
+A word about JEB3 and JEB 3.0-alpha: https://www.pnfsoftware.com/blog/jeb3-alpha-is-available/
+
+Core:
+- APK: Manifest: do not require schema attribute in Manifest
+- APK: always read entries from Central Directory
+- APK debug: attempt to process all candidate DEX units before debugging
+- DEX: Fix: parsing of Float and Double Value fields
+- DEX: Fix: array types effective name generation
+- JDB: facility to partially save native units in order to provide JEB2's JDB to JEB3's JDB compatibility for databases containing native code
+- Other minor fixes
+
+UI Client:
+- Code hierarchy tree: maintain state on update when some nodes are collapsed
+- FindText dialog: support focus transfer back to owner for modeless searches (Ctrl/Cmd + F)
+- CFG Graphing: Fix: array check in center()
+- JDB: Support for compatibility save (JEB2-to-JEB3 for projects having native code)
+
+
+>>> JEB v2.3.13 (April 3, 2018)
+
+Maintenance release.
+
+Core:
+- Native code analysis improvements
+- ARM, MIPS: improvements
+- ELF, PE: improvements
+- DEX: performance improvements
+- ARSC, AXML: tweaks for additional obfuscation schemes
+- MSVC unmangler: updates
+- Additional fixes
+
+UI Client:
+- More options for native code Reparsing
+- Trees and Hierarchy widgets: support for bucketization to handle very large trees
+- Export functions: upgrades
+- Notifications: rendering update
+- Various fixes
+
+
+>>> JEB v2.3.12 (March 8, 2018)
+
+Maintenance release.
+
+Core:
+- Native code analysis: many improvements (analysis, compiler detection, switch detection)
+- ARM, MIPS, ELF: improvements
+- DEX, Dalvik: updates
+- ARSC: improvements
+- Additional fixes
+
+UI Client:
+- Improved navigation from PE/ELF/MachO tables
+- Various fixes and tweaks
+
+
+>>> JEB v2.3.11 (February 15, 2018)
+
+Maintenance release.
+
+Core:
+- APK: Decoder: fixes and additions
+- DEX: upgrades; support for DEX 39 opcodes (that were already supported in ODEX mode)
+- X86: additions (AVX2, AVX-512)
+- MIPS64: additions
+- Proxy: better proxy support
+- Other additions (completion of JEB 2.3 branch is near)
+
+UI Client:
+- Proxy: better proxy support for all license types
+- Other changes 
+
+
+>>> JEB v2.3.10 (February 1, 2018)
+
+Maintenance release. New APK Resources Decoder enabled by default.
+
+Core:
+- APK Resource Decoder: fixes; hardening (support complex resources obfuscation); added appt2-like output as well (see pnfsoftware.com/blog)
+- DEX: fixes
+- PE: fixes
+- MIPS: fixes
+- XML: additions
+- Other changes
+
+UI Client:
+- Code: Locate code node in hierarchy from disassembly (shortcut: Ctrl|Cmd + G)
+- UI Action: view comments (similar to view cross-references) (shortcut: Ctrl|Cmd + /)
+- Rename action: display the original  name, if any.
+- Text search: Support for modeless text search dialogs; currently enabled for interactive text views only (eg, disassembly view, code views, etc.)
+- GTK/Linux: fixed issues related to "Active window not found"
+- macOS: support for Java 8 > 151 (will require Support Package v5; auto-downloaded when running jeb_macos.sh, else visit pnfsoftware.com/jeb2sp)
+- Other changes
+
+
+>>> JEB v2.3.9 (January 22, 2018)
+
+Important fixes + our all-new Android resources decoder. 
+
+Core:
+- Brand new APK resources decoder (needs to be manually enabled - see blog) 
+- LLDB server for Android debugging: upgraded to version 3.1
+
+UI Client:
+- Fixes for some GTK/Linux configurations
+- Navigation fixes
+
+
+>>> JEB v2.3.8 (January 9, 2018)
+
+Interactive Graphs. Unmanglers. ARM/MIPS/PE upgrades, and more.
+
+Core:
+- Dalvik: updates (do not re-parse switch/array data)
+- APK parser: updates
+- Unmanglers for MSVC, GCC binaries
+- ARM: updates
+- MIPS: updates
+- MIPS64: updates
+- MachO: updates
+- Win PE: API updates
+- Win PE: process TLS entries
+- Win PE: Resources parser
+- Win PE: Rich header parser
+- Native Decompiler Pipeline: updates
+- Typelibs: updates
+- LLDB server for Android debugging: upgraded to version 3.0
+- Assembly Document API upgrades
+- Various fixes and improvements
+
+UI Client:
+- Interactive Control Flow Graphs (Dalvik, Native, IR)
+- Asynchronous refresh for some long operations
+- Streamlined dialogs, support for scroll bars
+- Disassembly options for ARM: upgrades
+- Various fixes and improvements 
+
+
+>>> JEB v2.3.7 (October 27, 2017)
+
+Support for Mach-O. Android updates.
+
+Core:
+- Mach-O: added support for Mach-O and Mach-O/FAT
+- DEX: added support for ART-optimized opcodes; support for Dalvik parser variant in options
+- APK: documentation contribution for Android Manifest (XML tags and attributes)
+- APK: XML parsing fail-safe: if non-valid XML, parse as HTML
+- APK: added Android framework API 27 (Android 8.1)
+- APK: better degraded mode when some resources are missing
+- DEX Decompiler: fix regarding type creation in edge cases
+- OAT: updated plugin
+- PDF: updated plugin
+- Various fixes and tweaks
+
+UI Client:
+- Better 'Export' facilities (export all fragments, export all binary units, etc.)
+- Better error logging
+- Various fixes and tweaks
+
+
+>>> JEB v2.3.6 (October 12, 2017)
+
+Introducing the JEB Malware Sharing Network + plenty more upgrades in this release.
+ 
+ Core:
+- APK: upgrades
+- DEX: fixes
+- ZIP: fixes
+- CRX (Chrome Extension): added support
+- ARM: improvements
+- API changes: IEnginesPlugin.load(), IOptionDefinition.getDefaultValue(), etc.
+- Engines Plugin: VirusTotal report viewer
+- Other minor updates and bug fixes
+
+UI Client:
+- Support for JEB.IO and the Malware Sharing Network
+- Other updates
+
+
+>>> JEB v2.3.5 (September 29, 2017)
+
+API updates, focus on DEX, all builds can now run back-end plugins, preparing for Python back-end plugins.
+
+Core:
+- DEX: summary snippet in disassembly
+- DEX: explicitly show partial methods due to incomplete bytecode
+- DEX: consistently rename methods across type hierarchies
+- DEX: consistently rename fields across type hierarchies
+- DEX: javadoc contribution (overlays on hovers over classes/methods in disassembly)
+- DEX: always escape surrogate Unicode characters when rendering string litterals
+- DEX: various API updates and additions
+- APK: API updates (eg, direct Manifest access)
+- JDB: support in Interpreter for 'new' keyword to create new object instances
+- GDB: graceful fails when attempting to debug MIPS big-endian
+- ARM, ARM64: additions, improvements and fixes
+- X86: additions
+- PE/COFF: interface clean-up and added public API
+- Native: unmanglers for MSVC
+- ZIP: do not fail on encrypted entries
+- Certificates: API for unit, added support for base64-encoded x509 certs
+- Unit Contributions: API for contributions and interpreters
+- Floating Builds: less strict on version check
+- Floating Builds: support for Controller-provided messages (see manual)
+- Various API updates, see scripts on GitHub
+- Plenty more bug fixes and tweaks
+
+UI Client:
+- JEB engines initialized asynchronously (preparing for back-end plugins in Python)
+- Better contributions for text documents
+- Key bindings for actions were re-enabled in the Code Hierarchy view
+- Clean-up older versions on update
+- Improved reporting on Core errors
+- Other bug fixes and tweaks
+
+Headless Client:
+- Easier to use headless client (command line: --srv2)
+- Fix: added missing Jar dependencies in older builds
+- Added support for software update check
+
+
+>>> JEB v2.3.4 (September 12, 2017)
+
+Maintenance release.
+
+Core:
+- DEX: fixes
+- APK: improvements
+- XML, HTML, JSON: improvements
+- ARM, ARM64: improvements and fixes
+- MIPS: improvements
+- X86: fix regarding JDB2 restoration
+- C optimizer: improvements
+- Dalvik debugger: fixes around pause/resume
+- Better error logging and reporting
+
+UI Client:
+- Debugger controls: fixes and improvements
+- Better error logging and reporting
+
+
+>>> JEB v2.3.3 (August 22, 2017)
+
+ARM decompiler alpha, GDB debugging for all, more parsers.
+
+Core:
+- ARM decompiler: preview alpha (beta scheduled for this fall)
+- GDB: added support for any Linux target
+- GDB: basic support for HostIO sub-protocol
+- GDB: improvements  and fixes
+- GDB: JEB provides legacy register layouts when gdbserver does not provide them
+- ADB: wrapper improvements and fixes
+- XAPK: added parser
+- HTML: added parser
+- JSON: added parser
+- 7Z (SevenZip): added parser
+- Tar: added parser
+- APK identifier update to avoid matching on AAR (Android Archive) files
+- Siglib: new packages: MSVC 2015 (including Win10 SDK UCRT), MSVC 2013, Mirai
+- Error logging: improved error reporting and logging
+- Decompiler: fixes
+- Deserialization of older projects: fixed clash with obfuscated JEB
+
+UI Client:
+- UI support for generic GDB debugging
+- Bug fixes
+- Better error reporting
+
+
+>>> JEB v2.3.2 (August 7, 2017)
+
+Performance improvements, better Android debuggers, cumulative fixes.
+
+Core:
+- Android Dalvik Debugger: support for dynamically loaded DEX files; stability improvements
+- Android Native Debugger: switching from GDB to LLDB; stability and performance improvements; bug fixes
+- X86: performance improvement: faster parsing via instruction caching
+- Siglib ("Signatures Library): updated MSVC packages (2015, 2013); MS C++ unmanglers; updated Mirai MIPS signature packages
+- DEX: performance improvement: faster parsing via instruction caching
+- Serialization: performance improvements, size reduction in JDB2 v3
+- MIPS Decompiler: improvements
+- ARM: fixes
+
+UI Client:
+- Minor improvements to the debugger widgets
+
+
+>>> JEB v2.3.1 (June 30, 2017)
+
+Native code, native decompilers, cumulative improvements and fixes.
+
+Core:
+- Full native code analysis platform, including API
+- Native decompiler platform, including API
+- MIPS 32-bit decompiler (JEB Pro, JEB Embedded)
+- Type library manager: types for win32, GNU linux
+- Code signing and matching system: libraries for MSVC, embedded MIPS libc
+- x86, ARM, MIPS: improvements and fixes
+- AVR: added Atmel AVR disassembler
+- PE, ELF: improvements and fixes
+- MS-COFF, AR: added support
+- IHEX: added Intel Hex firmware format support
+- Android Debugging: improvements, better messaging, ADB wrapper fixes, GDB client fixes
+- Android Debugging: support for debugging non-debuggable on x86, x86-64, aarch64 (note: support for arm was added in 2.2) 
+- Android: bundled framework API 26 (Android O)
+- DEX/Dalvik: support for DEX v36, invoke-polymorphic and invoke-custom; fixes
+- Dalvik: immediate base selection (10, 16, 8) action
+- APK: support for v2 signature scheme
+- Faster persistence to JDB2
+- Utility package refactoring, which may break some scripts and plugins
+
+UI Client:
+- Better defaults for sizes, positioning, general behavior when opening well-known file types
+- Better default code font selection
+- Menu and commands reorganization
+- Added Native menu and dialogs specific to native code analysis and decompilation
+- Item-to-item navigation
+- Dark theme (experimental, Windows only)
+- Better code hierarchy view
+- Support for asynchronous analysis of native code
+- Localization refresh: 10 languages supported (still a work-in-progress)
+- Updated UI framework
+- Development of our graphing library is ongoing: it is currently used to render IR-CFG of decompiled routines (native code only)
+- Various bug fixes
+
+
+>>> JEB v2.3.0-beta (May, June 2017)
+
+New MIPS decompiler, full support for native code, lots of improvements and fixes, and much more!
+
+Refer to our blog for details.
+
+
+>>> JEB v2.2.11 (April 19, 2017)
+
+Maintenance release for JEB 2.2.x branch to support Java 8 update 131.
+
+Desktop client:
+- Fixes
+
+Core and Core Modules:
+- Support for Java 8.131
+- Android Debuggers: additions and fixes in the interpreter
+- Android: support package level 25
+- Stronger zip/jar parsing, support for zip64
+
+
+>>> JEB v2.2.10 (October 10, 2016)
+
+Maintenance release. The work on major update JEB 2.3 is ongoing.
+
+Desktop client:
+- Interpreter: improvements, auto-completion with Tab
+- Various bugfixes and improvements
+- Support-Package no longer required for headless builds
+- Frictionless license key generation on first use
+
+Core and Core Modules:
+- Interpreter: improvements for debugger interpreter (details in blog)
+- APK: support for another case of obfuscated Manifest
+- APK: do not remove version attributes in Manifest tag
+- DEX: partial support for multi-DEX apps that redefine classes
+- DEX: fix: rendering of array decl. with 0 element
+- ELF: Fix: case where metadata description field is not present
+- Other bugfixes
+
+Android DEX Decompiler:
+- Fix: null constant string rendering
+- Minor changes for better error management
+
+
+>>> JEB v2.2.9 (September 5, 2016)
+
+Maintenance release. Bug fix in the UI framework.
+
+Desktop client:
+- UI fix: Workaround for Equinox behavior changes introduced in Eclipse Mars, which could lead to ever-growing storage use on Windows platforms
+- Lazy initialization for big arrays
+- Debuggers views: Minor improvements
+
+Core and Core Modules:
+- Temporarily backup JDB2 databases before saving (can be disabled in the options)
+
+Debuggers:
+- Better interpreter "invoke" commands
+- Other fixes
+
+
+>>> JEB v2.2.8 (September 1, 2016)
+
+Maintenance release. Final 2.2 branch update before 2.3 beta release.
+
+Desktop client:
+- Support unit auto-opening based on artifact type, eg, DEX units for an APK - can be disabled (option .ui.AutoOpenDefaultUnit)
+- Remember last open folders properly
+- Avoid rendering if a unit is not fully processed
+- Text viewer: Fix: avoid jumpy caret on corner-case document updates
+- Text viewer: Fix: refresh green bar on mouse wheel
+- Text viewer: Fix: indicator triangle was not displayed when caret on last line
+- Text viewer: Fix: hover box properly disposed
+- Fix: check sub-unit boundaries
+- Fix: hardened xrefs dialogs, do not throw on errors
+- Various bug fixes
+
+Core and Core Modules:
+- Support for multiple plugins entry-point in single Jar
+- DEX: do not throw on bad addressToCodeCoordinates() conversions
+- Dalvik: Fix: do not throw on illegal access to array- or switch-instruction data
+- Various bugfixes
+
+Debuggers:
+- JDWP: Fix: disallow breakpoint on types
+- Interpreter: allow recursive commands
+- Interpreter: JDWP: allow retrieving RefType data from object
+- Fix: do not throw in Demo build when attempting to debug an non-merged multi-DEX
+- Fix: manage error in readMemory on failure 
+
+Android DEX Decompiler:
+- API: do not throw in some non-dangerous cases (eg, attempt to retrieve combined operator of a non-combined operator)
+- Other minor changes to support new serialization annotations and checks in 2.3
+
+PDF Analyzer:
+- N/A
+
+
+>>> JEB v2.2.7 (August 12, 2016)
+
+Amendment to v2.2.6 - an important fix had not shipped with the previous release.
+
+
+>>> JEB v2.2.6 (August 4, 2016)
+
+Debuggers improvement (stability and features). Major JEB 2.3 is under development; we will provide details soon.
+
+Desktop client:
+- Debuggers: Process/Threads new tab: memoryCode which allow to see live memory data and live disassembly code.
+- Debuggers: VM/Locals view: Display improvements: add Final and static flags, detect the Class for null objects, display "null" instead of "id=0"
+- Debuggers: VM/Locals view: add a right click action to call toString() on objects
+- Debuggers: VM/Locals view: Performance improvements: split arrays in element groups when more than 100 elements, do not preload objects.
+- Bugfix: Attempt to attach a debugger to a non-debuggable unit would loop infinitely
+- Bugfix: Overview bar scrollbar on native debuggers for addresses larger than 0x80000000
+- Bugfix: Regression if JEB path contained spaces with some Java runtimes
+- Bugfix: Disappearing saved "recently opened files" and "recently executed scripts"
+- Information: View memory usage in About box
+
+Core Modules:
+- APK: bundling Android Nougat resource framework API 24 (rev. 2)
+- ARM: bugfix: fail gracefully when VSTM and VLDM have incorrect parameters
+- X86: bugfix: minor
+
+Debuggers:
+- Bugfix: On Step into, check that the breakpoint is reached by the current thread (this caused breakpoint to be reached several times, UI slowed down, and impossibility to detach or close project)
+- Bugfix: Breakpoints on overloaded methods was not working properly
+- New parameter UseNativeDebugger which can have 3 values: DEFAULT, NEVER, ALWAYS to indicate if the user wants to connect gdb native debugger (DEFAULT will only connect gdb when the target APK embeds native libraries)
+- Raise notification for devices older than Android 5.1 where JDWP implementations have bugs
+- Allow modifying Java variables (primitives and String)
+- Improve JDWP performance (cache Class Operations)
+- Reduce JDWP timeout to 15s (instead of 30s)
+- Interpreter: allow field and array element picking (example: "readobj 4023 var1.var2[3]" or "readobj this.var1.var2")
+- Interpreter: add "invoke" entry to remotely call a method. BE CAREFULL that deadlock can happen if current paused thread requires some action
+
+Android DEX Decompiler:
+- Fix: overly aggressive array-inlining optimizations
+- Other fixes
+
+PDF Analyzer:
+- N/A
+
+
+>>> JEB v2.2.5 (June 13, 2016)
+
+Support for MIPS and Aarch64 + Maintenance update. (All Android ABIs but MIPS64 have now full debugging support!)
+
+Desktop Client:
+- Friendlier update mechanism on license expiration and support for manual update
+- Code hierarchy: option to show all items, including external types
+- Debuggers: support for generic copy action via context menu
+- Debuggers: log fragments to track debugger events
+- Debuggers: stack view fragments if available
+- Debuggers: force-detach if attach was unsuccessful
+- Fix: keyboard bindings issues
+- Fix: version comparison on update was preventing required UI state refresh
+- Other bugfixes related to the UI framework
+
+Core Modules (including Disassemblers):
+- MIPS disassembler (MIPS32)
+- Various improvements for ARM/ARM64
+- Support code define/undefine actions
+- Better processing of ELF symbols
+- ARM: PLT stub detection for ELF
+
+Debuggers:
+- MIPS: debugger for Android native libraries compiled for 'mips' ABI, with support for single-step, tracing, breakpoints, etc.
+- Aarch64: debugger for Android native libraries compiled for 'arm-v8a' ABI (aka ARM 64)
+- Stability improvements, race condition and synchronization issues were fixed
+- Support for 'write registers' command in interpreter for native debuggers 
+
+Android DEX Decompiler:
+- N/A
+
+PDF Analyzer:
+- N/A
+
+
+>>> JEB v2.2.4 (May 25, 2016)
+
+Maintenance update + Disassembly support for ARM 64. Debugging support for ARM 64 is coming next, along with MIPS.
+
+RCP Client:
+- Debuggers: support for editable type hints for Dalvik variables, including objects/arrays
+- Text viewer: normal caret behavior is now the default behavior (customizable)
+- Text viewer: smarter event processing from plugins to avoid useless refreshes
+- Various bug fixes (text viewer, navigation bar, interpreter window, etc.)
+- Limited logger length, customizable via UI property
+
+Core and Essential Modules:
+- Aarch64 (ARM v8 64-bit) disassembly support
+- Fix: corner-case unit processing after deserialization 
+- APK: fixes + shipping latest API 23 Android Framework (dated March)
+- API: added AbstactUnit.onPropertyChange()
+- Minor changes and improvements
+
+Debuggers:
+- Provide effective (refactored) addresses to clients
+- Dalvik: interpreter: added "readvar" and "readobj" commands
+- API: support for type hints
+- Stability improvements 
+
+DEX Decompiler:
+- Performance improvements (memory usage)
+- Added plugin option to set decompilation timeout 
+- API: added IJavaClass.getSupertype()/getImplementedInterfaces()
+- Java 8: render "default" keyword for default implementations in interfaces
+- Java 8: proper syntax/support for calls to super interface's "default" method
+- Corner case bugfix in the AST optimizer
+
+
+>>> JEB v2.2.3 (May 4, 2016)
+
+The Android debuggers are now public (see v2.2+ changes). Full support for multi-Dex merging. Next up: support for ARM v8 64-bit in JEB v2.2.4.
+
+RCP Client:
+- Speeding up project tree rendering and refreshes for high-yield artifacts (eg, large APKs) 
+- Reverting to UI package v2 (RCP 4.4.2 based) for Mac platforms
+- Fix: All invocations of the client will consistently pull workspace information from bin/
+
+Core and Essential Modules:
+- APK/DEX: full support for multi-Dex merging (beyond 64Krefs limitations)
+- DEX: assembly rendering with higher granularity (one side-effect is faster rendering for large classes)
+- DEX: assembly cache fix-up (could lead to high memory usage)
+- DEX: memory usage improvements
+- APK: Fix: identification was failing on some Zip files
+- API: Fix: WrapperUnit: do not recreate presentations that already exist
+- API: added IInteractiveUnit.executeAction() with no-notifying support for plugins
+- API: better documentation using Doclava
+- Tool: ADB: support for path expansion (~)
+
+DEX Decompiler:
+- API: addition of IJavaOperator.getOperatorType()
+
+
+>>> JEB v2.2.2 Beta (April 24, 2016)
+
+Final update for JEB 2.2 Beta. JEB 2.2.3 will be made available to all users shortly.
+
+RCP Client:
+- UI support package major update (v3, RCP 4.5.2 based)
+- Fix: Windows start-up script
+
+Core and Essential Modules:
+- Debuggers: stability improvements and new features (eg, findmem)
+- APK: bugfix: file resource leak: temporary files in %tmp% were not deleted properly
+- ARM: stability and parser improvements
+- Minor fixes related to resource leaks
+
+DEX Decompiler:
+- API: getElementType() for all AST elements
+- API: added missing getSignature() method for Method elements
+- Other fixes
+
+
+>>> JEB v2.2.1 Beta (April 13, 2016)
+
+An update on the Dalvik and native debuggers - still in Beta - and a specialized API to deal with the finer details of DEX.
+
+RCP Client:
+- Debugger: full memory view (read-only, bytes only for now)
+- Debugger: support for Run-to-line
+- Debugger: allow copy to clipboard for Variables
+- Debugger: Dalvik: view all fields, including super-type fields
+- Shortcut: Ctrl+M to maximize/minimize views, Ctrl+T to toggle the toolbar
+- Various bug fixes
+
+Core and Essential Modules:
+- Debuggers improvements, fixes and additions (sample code for API)
+- DEX API allow full access to all DEX elements (see IDexUnit interface) (sample code) 
+- APK API (partial) (see IApkUnit interface) 
+- XML: added missing top-level comments
+- Various bug fixes
+
+
+>>> JEB v2.2.0 Beta (April 2, 2016)
+
+- Native code support: ARM, Intel x86 and x86-64
+- Android debuggers: Dalvik and native
+- Details at www.pnfsoftware.com/blog/jeb-android-debuggers
+
+
+>>> JEB v2.1.4 (March 28, 2016)
+
+Maintenance release, bugfixes and API changes.
+
+RCP Client:
+- UI API: allow retrieval of focused unit via getFocusedView()
+- UI API: possibility to open a view via openView()
+- Allow artifact file path update in JDB2 database
+
+Core and Essential Modules:
+- XML: files having a size of less than 4 bytes could be incorrectly identified as XML files
+- ELF: units are now serialized
+- API: added getItemObject() to interactive unit interface
+- Bugfix: support loading of JDB2 if artifacts are missing
+- Dispose all units on close event
+- Unit processing handled by the main processor, per SPI change
+
+DEX Decompiler:
+- Fix: getComments and getAddressLabels return per-class maps, as opposed to the full DEX map
+
+
+>>> JEB v2.1.3 (March 15, 2016)
+
+Layout manager and various updates before 2.2 beta.
+
+RCP Client:
+- Layout manager: save and restore layouts automatically
+- Prefer loading the most recent JDB2 instead of the first one
+- UI bug fixes
+
+Core and Essential Modules:
+- APK plugin: Default frameworks/ directory is now rooted in user's home folder
+- ELF plugin: Tighter checks
+- XML: lazy processing for complex SVG files
+- Bugfix: fail properly when multi-DEX cannot be merged 
+- API: Marks in text documents
+- Minor changes and fixes
+- Added utility routines (for text documents, general utility, etc.)
+- Headless client for easy license key generation in air-gaps
+
+DEX Decompiler:
+- AST tags (rendered as Java text marks)
+- Bugfix: regression regarding rendering of static method calls in anons
+- API: Added getInferredType() to public decompiler interface
+
+
+>>> JEB v2.1.2 (February 16, 2016)
+
+Additional details can be found on our blog.
+
+RCP Client:
+- Support for multiple UI layouts
+- Option to keep the currently selected node in project tree in-sync with the current view ("auto-open units")
+- Option to allow same-type units to be opened in same or new view
+- Text views improvement and better text navigation
+- Options dialog improvements
+- Minor UX tweaks and fixes
+
+Core and Essential Modules:
+- Python script support via Jython is now part of the core API
+- The core jeb.jar includes one implementation of a headless client that will execute
+  Python scripts (for Business and above builds; command-line switch: --script)
+- APK module: option to merge multi-DEX APKs when possible (the option is enabled by default)
+- DEX module: allow "pX" rendering in register-ranges
+- XML module: bugfix: malformed XML header (missing trailing '?')
+- Allow empty input
+- Miscellaneous bug fixes
+
+DEX/Dalvik Decompiler:
+- Fix: Rendering issue with static methods of base class of anonymous class
+
+PDF Analyzer Module:
+- Support for XFA (XML Forms Architecture) fragment streams reconstruction and parsing
+
+
+>>> JEB v2.1.1 (January 15, 2016)
+
+Minor update, mostly improvements in UX of the desktop client. 
+
+RCP Client:
+- Support for view replacement (this makes navigating decompiled code easier)
+  ("Sticky" views can be opened by right clicking a unit, and selecting "Open a new view")
+- Better navigation (forward, backward), with cross-view support
+- Better network proxy support
+- Fixes regarding back-end events processing by the client
+- Minor UX tweaks
+
+Core:
+- Bugfix: APK without resource folder was showing an empty folder in UI
+- Support for network proxy (refer to the FAQ for setup instructions)
+- Second-chance if network connectivity fails and the build requires it
+- Children of ELF units are now properly processed
+- Bugfix: Soft delegation for ELF sections (side-effect is Android OAT processing is re-enabled)
+- Miscellaneous bug fixes
+
+DEX/Dalvik Decompiler:
+- Bugfix: anonymous classes within static methods were not rendered properly
+
+
+>>> JEB v2.1.0 (December 8, 2015)
+
+Major release. Includes: better navigation, augmented API (UI-API, Java AST API), persistence of decompiled code, etc.
+Paves the road for the JEB 2.2 release which contains various machine code parsers.
+
+RCP Client:
+- Navigation/Overview bars in text viewers - see blog
+- Overview bars support rendering of metadata provided by interactive units - see script
+- Implemented augmented UI-API (refer to changes in Core) - see script
+- Improved logging in development mode
+- Better asynchronous jobs
+- Better algorithm to determine which panel should receive views 
+- F2 shortcut for client script execution
+- Better navigation in text views, including bug fixes
+- Regular expression text searches
+- Disabled Option panels areas that are not available in a given build
+- Disabled GTK3
+- Prepared support for E4 Mars 
+- Miscellaneous bug fixes
+
+Core:
+- Augmented Client API for UI clients (allow interaction with views, fragments, etc.) - see script
+- Java AST API for manipulation of Java source units
+- The API underwent several changes that will require code fix-ups in existing plugins - see blog
+- Metadata manager for interactive units
+- Unit interfaces updated to support persisted and transient children units
+- Unit formatter interfaces updated to support persisted and transient documents
+- Better JAR plugins loader, will try to load newest version only
+- Various bug fixes and engine refactoring for performance
+- Native ELF (32, 64) and PE (32, 64) plugins
+- Fixes in serialization; some JDB generated by JEB 2.0 might be incompatible with 2.1
+- Compression/encryption support added for JDB2 (30% of original size)
+- Under-the-hood support for processor-based code units, part of the public API in JEB 2.2
+
+DEX/Dalvik Decompiler:
+- Support for the nwly-introduced Java AST API, offering read/write access to decompiled code
+  (The Java AST API is slightly different than JEB1's - refer to our blog for a detailed change log)
+- Decompiled code is persisted in the JDB2 files
+- Decompiler unit name reflects the current effective class name
+
+PDF Module:
+- Support for persistence: project saved to JDB2 files
+- Various bug fixes and code refactoring improvements
+
+
+>>> JEB v2.0.15 (December 1, 2015)
+
+This is the final 2.0 release!
+The 2.1 branch has been in the works for quite some time. It is scheduled for publishing on December 8. 
+
+RCP Client:
+- Temporary workaround for the MacOS-specific issue with Eclipse RCP (NPE on Control.internal_new_GC)
+- Export Java UT8-encoded
+- Miscellaneous bugfixes
+
+Core/Modules:
+- Various bugfixes
+
+
+>>> JEB v2.0.14 (November 12, 2015)
+
+This release adds support for client scripts in Python.
+Most of our workload is focused on the upcoming major releases 2.1 and 2.2.
+
+RCP Client:
+- Support for client scripts (in Python, using Jython)
+- Text viewer: support for word-wrapping in source views
+- Text viewer: tooltip in navigation bar
+- Bugfix: text search
+- Miscellaneous bugfixes and increased verbosity
+
+Core:
+- Public API package for client scripts (com.pnfsoftware.jeb.client.api.**)
+- Better persistence, loading and saving large projects uses less memory
+- Bugfix: logger CRLF
+- Bugfix: unit child removal
+
+Modules:
+- (dex) bugfix: unit child removal
+- (dcmp_dex) bugfix: no 'this' for abstract static methods
+
+
+>>> JEB v2.0.13 (October 15, 2015)
+
+A minor maintenance release. Most work is focused on the upcoming v2.1.
+
+RCP Client:
+- Maintain caret's column position when scrolling in text views 
+- Developer portal (refer to Help menu and blog)
+- Various bug fixes and changes
+
+Core:
+- Initial support for plugin contributors and unit contributions
+- Prevent some plugin initialization errors from corrupting the engines
+- Fixed issue in logger
+- Various bug fixes
+
+
+>>> JEB v2.0.12 (September 29, 2015)
+
+RCP Client:
+- Allow engines (back-end) plugins execution via the File/Engines menu
+- Verify development plugins classnames in Options panel
+- Limit line length in text fragments (configurable)
+- Asynchronous decompilation when triggered from xrefs or when following items
+- Allow deletion of units and unit trees
+- Bugfix: filter text in dialog boxes was conflicting with Enter key
+- Bugfix: invalid window error on GTK
+- Miscellaneous bug fixes
+
+Core:
+- Support for optimized DEX (odex) files, see our blog for how-to
+- Stronger support for illegal/invalid DEX opcodes
+- DEX decompiler: added missing support for cross-references on variables
+- Unit deletion (experimental)
+- Minor API changes
+- Miscellaneous optimizations to reduce memory footprint
+
+
+>>> JEB v2.0.11 (September 22, 2015)
+
+RCP Client:
+- Interruptible save/load project
+- Allow users to enable or disable plugins (see File/Engines)
+- Fast filter search in large trees
+- Lazy loading of strings view to decrease memory usage and speed up loading of views
+- Cross-references navigation across the source (decompiled) views
+- Navigation from code string view to string reference in assembly
+- Possibility to display type hierarchies in source views
+- More compact view names for increased readability
+- More consistent status bar behavior
+- Bugfix: shell retrieval
+- Bugfix: word-wrap in text search
+- Bugfix: text dialog adjustment on resize
+- Bugfix: do not restart a decompilation if already started
+- Bugfix: allow program close on error
+- Miscellaneous bugfixes and improvements
+
+Core:
+- Faster persistence mechanism (up to 5 times)
+- Dynamic activation and deactivation of plugins
+- Better matching assembly code to/from decompiled source code
+
+
+>>> JEB v2.0.10 (September 14, 2015)
+
+RCP Client:
+- Locate current unit in project tree
+- Text views: Ctrl/Cmd + Shift + Up|Down to perform regular text scrolling
+- Bugfix: tree navigation could focus the filter text too early
+- Bugfix: NPE for new users
+
+Core:
+- N/A
+
+
+>>> JEB v2.0.9 (September 10, 2015)
+
+RCP Client:
+- Export Decompiled code is interruptible
+- Smoother text scrolling
+- Bugfix: code hierarchy tree not refreshing properly
+- Bugfix: null pointer exceptions on Jump in text views
+
+Core:
+- N/A
+
+
+>>> JEB v2.0.8 (September 9, 2015)
+
+A maintenance release with stability improvements and export functionality.
+
+RCP Client:
+- Export decompiled code via the File menu
+- Better filtering and search in all tree and table views
+- Persistence of UI widget properties (eg, tables column widths)
+- More status bar messages, such as location in project tree
+- Bugfix: layout manager could show duplicate tabs
+- Bugfix: memory leak in the client
+- Bugfix: infinite wrap-around search in text views if text not found
+- Bugfix: fixed potential dialog box issues on Linux GTK
+- Bugfix: flickering in text views
+- Bugfix: potential scroll bar errors in text views
+
+Core:
+- Additional changes for planned v2.1 (debugger module API)
+
+
+>>> JEB v2.0.6 (August 25, 2015)
+
+This release is primarily a user experience improvement.
+
+RCP Client:
+- Shells and widgets's position and size history 
+- Contextual menus with actions in text document views and other unit views
+- More intuitive navigation from code hierarchy views
+- Unit views location preferences
+- Allow complex filters on options and other tree/table views
+- Minor UI bug fixes (related to toolbars, icons, keyboard shortcuts, etc.)
+
+Core:
+- User-defined limit on recursive processing for deeply nested artifacts
+
+Analysis plugins:
+- Microsoft Compound file (OLE) analysis plugin for Excel and Powerpoint files (open-source)
+
+
+>>> JEB v2.0.5 (August 18, 2015)
+
+Core: 
+- APK module: changes to handle Android API 23 (Marshmallow) framework
+- APK module: support for obfuscated resources
+- DEX Decompiler module: performance improvement
+- Miscellaneous bug fixes and stability improvements
+
+Analysis plugins:
+- MIPS 32-bit PoC disassembler (open-source)
+
+
+>>> JEB v2.0.4 (August 10, 2015)
+
+RCP Client:
+- Locale bugfix
+- Tree auto-expansion for code units
+- MOTD facility
+- Styling options (colors and font)
+- Better error handling
+- Provide more hints to floating clients
+
+Core: 
+- Enum class identifiers
+- Support expansion for tree documents
+
+Analysis plugins:
+- Adobe PDF plugin (customers only)
+- Linux ELF plugin (open-source)
+- Android OAT parser (open-source)
+- PKM/ETC1 images parser (open-source)
+- OBB Android Expansion packs plugin (open-source)
+- FAT (File Allocation Table) parser, used by OBB (open-source)
+
+
+>>> JEB v2.0.1 (August 1, 2015)
+
+Initial product release

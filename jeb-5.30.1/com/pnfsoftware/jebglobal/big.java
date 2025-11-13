@@ -1,0 +1,89 @@
+package com.pnfsoftware.jebglobal;
+
+import com.pnfsoftware.jeb.core.exceptions.JebRuntimeException;
+import com.pnfsoftware.jeb.core.units.code.IInstruction;
+import com.pnfsoftware.jeb.core.units.code.android.dex.IDalvikInstructionParameter;
+import com.pnfsoftware.jeb.util.format.Strings;
+import com.pnfsoftware.jeb.util.serialization.annotations.Ser;
+import com.pnfsoftware.jeb.util.serialization.annotations.SerId;
+
+@Ser
+public class big implements IDalvikInstructionParameter {
+   @SerId(1)
+   private int q;
+   @SerId(2)
+   private long RF;
+
+   public big(int var1, long var2) {
+      this.q = var1;
+      this.RF = var2;
+   }
+
+   @Override
+   public int getType() {
+      return this.q;
+   }
+
+   @Override
+   public long getValue() {
+      return this.RF;
+   }
+
+   @Override
+   public String format(IInstruction var1, long var2) {
+      StringBuilder var4 = new StringBuilder();
+      long var5 = this.getValue();
+      switch (this.getType()) {
+         case 0:
+            Strings.ff(var4, "v%d", var5);
+            break;
+         case 1:
+            Strings.ff(var4, "#%X", var5);
+            break;
+         case 2:
+            int var8 = (int)var5;
+            Strings.ff(var4, "@%d", var8);
+            break;
+         case 3:
+            int var7 = (int)(var2 + var5 * 2L);
+            Strings.ff(var4, "%X", var7);
+            break;
+         case 4:
+            Strings.ff(var4, "v%d-v%d", var5 & 65535L, var5 >> 32 & 65535L);
+            break;
+         case 5:
+            Strings.ff(var4, "@@%d", var5);
+            break;
+         default:
+            throw new JebRuntimeException("Unsupported parameter type: " + this.getType());
+      }
+
+      return var4.toString();
+   }
+
+   @Override
+   public int hashCode() {
+      int var1 = 1;
+      var1 = 31 * var1 + this.q;
+      return 31 * var1 + (int)(this.RF ^ this.RF >>> 32);
+   }
+
+   @Override
+   public boolean equals(Object var1) {
+      if (this == var1) {
+         return true;
+      } else if (var1 == null) {
+         return false;
+      } else if (this.getClass() != var1.getClass()) {
+         return false;
+      } else {
+         big var2 = (big)var1;
+         return this.q != var2.q ? false : this.RF == var2.RF;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return Strings.ff("t=%d,v=%d", this.getType(), this.getValue());
+   }
+}

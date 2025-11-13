@@ -1,0 +1,10 @@
+package com.pnfsoftware.jeb.corei.parsers.asm.nativesig.siggen;
+
+import com.pnfsoftware.jeb.core.units.code.asm.sig.INativeSignature;
+import java.util.List;
+
+public interface iZ {
+   List q(INativeSignature var1);
+
+   void q(INativeSignature var1, String var2);
+}

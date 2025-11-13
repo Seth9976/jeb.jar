@@ -1,0 +1,13 @@
+package com.pnfsoftware.jebglobal;
+
+import com.pnfsoftware.jeb.core.units.code.asm.memory.MemoryException;
+
+class wl extends xf.CU {
+   wl(int var1) {
+      super(var1);
+   }
+
+   public void q(xf.eo var1) throws MemoryException {
+      var1.mem.writeLong(var1.P(), var1.A(), var1.endianness);
+   }
+}

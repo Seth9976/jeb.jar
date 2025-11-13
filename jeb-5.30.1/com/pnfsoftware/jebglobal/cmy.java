@@ -1,0 +1,11 @@
+package com.pnfsoftware.jebglobal;
+
+import com.pnfsoftware.jeb.core.units.code.asm.processor.ProcessorException;
+import com.pnfsoftware.jeb.core.units.code.asm.processor.memory.DirectEncodedMemoryArea;
+
+class cmy implements clw {
+   public clv q(byte[] var1, int var2) throws ProcessorException {
+      int var3 = DirectEncodedMemoryArea.get(6, 5).decodeInt(var1);
+      return clv.q(5, var3 + 32, false);
+   }
+}

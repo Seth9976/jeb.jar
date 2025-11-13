@@ -1,0 +1,28 @@
+package com.pnfsoftware.jeb.core.units.code.android.dex;
+
+import java.util.List;
+import java.util.SortedMap;
+
+public interface IDexDebugInfo {
+   int DBG_END_SEQUENCE = 0;
+   int DBG_ADVANCE_PC = 1;
+   int DBG_ADVANCE_LINE = 2;
+   int DBG_START_LOCAL = 3;
+   int DBG_START_LOCAL_EXTENDED = 4;
+   int DBG_END_LOCAL = 5;
+   int DBG_RESTART_LOCAL = 6;
+   int DBG_SET_PROLOGUE_END = 7;
+   int DBG_SET_EPILOGUE_BEGIN = 8;
+   int DBG_SET_FILE = 9;
+   int DBG_FIRST_SPECIAL = 10;
+   int DBG_LINE_BASE = -4;
+   int DBG_LINE_RANGE = 15;
+
+   int[] getParameterNameIndexes();
+
+   IDexDebugLine getLineInfo(int var1);
+
+   List getVariables(int var1);
+
+   SortedMap getKnownVariablesMap(IDexMethod var1);
+}
